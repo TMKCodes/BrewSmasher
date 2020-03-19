@@ -1,0 +1,25 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.content {
+  padding-top: 15px;
+}
+
+.centered-content {
+  width: 290px;
+  margin: auto;
+}
+
+.form-inline {
+  margin-top: 8px;
+}
+
+td > button {
+  margin-right: 8px;
+}
+
+.jumbotron {
+  margin-bottom: 15px;
+}

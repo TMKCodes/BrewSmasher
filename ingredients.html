@@ -1,0 +1,449 @@
+<div class="container-fluid content" id="add-hop-content" style="display: none;">
+  <form id="add-hop-form" class="centered-content" method="POST" action="server.php">
+    <h2>Hops</h2>
+    <p>Please check that the hop does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of hops.</p>
+    <div class="form-group">
+      <label for="hop-name">Name of hop:</label>
+      <input type="text" class="form-control" id="hop-name" name="hop-name" />
+    </div>
+    <div class="form-group">
+      <label for="hop-origin">Origin of the hop:</label>
+      <select class="form-control" name="hop-origin" id="hop-origin">
+        <option>Africa</option>
+        <option>Asia</option>
+        <option>Central America</option>
+        <option>Eastern Europe</option>
+        <option>European Union</option>
+        <option>Middle East</option>
+        <option>North America</option>
+        <option>Oceania</option>
+        <option>South America</option>
+        <option>The Caribbean</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="hop-alpha">Alpha percentage of hop:</label>
+      <input type="text" class="form-control" id="hop-alpha" name="hop-alpha" />
+    </div>
+    <div class="form-group" >
+      <label  for="hop-beta">Hop beta percentage:</label>
+      <input type="text" class="form-control" id="hop-beta" name="hop-beta" />
+    </div>
+    <div class="form-group">
+      <label for="hop-use">Preferred usage of the hop:</label>
+      <select class="form-control" name="hop-use" id="hop-use">
+        <option>Boil</option>
+        <option>Dry hop</option>
+        <option>Mash</option>
+        <option>First Wort</option>
+        <option>Aroma</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="hop-type">Type of the hop:</label>
+      <select class="form-control" name="hop-type" id="hop-type">
+        <option>Both</option>
+        <option>Bittering</option>
+        <option>Aroma</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="hop-form">Form of the hop:</label>
+      <select class="form-control" name="hop-form" id="hop-form">
+        <option>Pellet</option>
+        <option>Plug</option>
+        <option>Leaf</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group" >
+      <label for="hop-hsi">Hop stability index:</label>
+      <input type="text" class="form-control" id="hop-hsi" name="hop-hsi" />
+      <small class="form-text text-muted">Percentage of hop alpha lost in 6 months of storage.</small>
+    </div>
+    <div class="form-group" >
+      <label for="hop-substitutes">Substitus:</label>
+      <input type="text" class="form-control" id="hop-substitutes" name="hop-substitutes" />
+      <small class="form-text text-muted">List (Comma seperated) of substitutes that can be used for this hop. </small>
+    </div>
+    <div class="form-group" >
+      <label  for="hop-humulene">Hop humulene percentage:</label>
+      <input type="text" class="form-control" id="hop-humulene" name="hop-humulene" />
+    </div>
+    <div class="form-group" >
+      <label  for="hop-caryophyllene">Hop caryophyllene percentage:</label>
+      <input type="text" class="form-control" id="hop-caryophyllene" name="hop-caryophyllene" />
+    </div>
+    <div class="form-group" >
+      <label  for="hop-cohumulone">Hop cohumulone percentage:</label>
+      <input type="text" class="form-control" id="hop-cohumulone" name="hop-cohumulone" />
+    </div>
+    <div class="form-group" >
+      <label  for="hop-myrcene">Hop myrcene percentage:</label>
+      <input type="text" class="form-control" id="hop-myrcene" name="hop-myrcene" />
+    </div>
+    <div class="form-group">
+      <label for="hop-note">Notes for the hop:</label>
+      <input type="text" class="form-control" id="hop-note" name="hop-note" />
+    </div>
+    <input type="hidden" name="request" value="add-hop" />
+    <button type="submit" class="btn btn-primary" id="add-hop-button">Add Hop</button>
+  </form>
+</div>
+<div class="container-fluid content" id="search-hops-content" style="display:none">
+  <div class="alert alert-success centered-content" role="alert" id="add-hop-success" style="display: none;">
+    Adding hop was successfull, now you can find it from the system wide hop list and use it in your own recipes.
+  </div>
+  <h2 class="centered-content">Find Hops</h2>
+  <form id="search-hops-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-hops-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-hops-type-checkbox" name="search-hops-type-checkbox">
+        <option>Bittering</option>
+        <option>Aroma</option>
+        <option>Both</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-hops-search-input" class="sr-only">keyword</label>
+      <input type="password" class="form-control" id="search-hops-search-input" placeholder="Keyword" name="search-hops-search-input" />
+    </div>
+    <input type="hidden" name="request" value="search-hops" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table" id="search-hops-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Origin</th>
+    </thead>
+    <tbody id="search-hops-table-body">
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid content" id="add-yeast-content" style="display: none;">
+  <form id="add-yeast-form" class="centered-content" method="POST" action="server.php">
+    <h2>Yeasts</h2>
+    <p>Please check that the yeast does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of yeasts.</p>
+    <div class="form-group">
+      <label for="yeast-name">Name of yeast:</label>
+      <input type="text" class="form-control" id="yeast-name" name="yeast-name" />
+    </div>
+    <div class="form-group">
+      <label for="yeast-type">Type of the yeast:</label>
+      <select class="form-control" name="yeast-type" id="yeast-type">
+        <option>Ale</option>
+        <option>Lager</option>
+        <option>Wheat</option>
+        <option>Wine</option>
+        <option>Champagne</option>
+        <option>Other</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="yeast-form">Form of the yeast:</label>
+      <select class="form-control" name="yeast-form" id="yeast-form">
+        <option>Dry</option>
+        <option>Slant</option>
+        <option>Culture</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="yeast-laboratory">Laboratory of the yeast:</label>
+      <input type="text" class="form-control" id="yeast-laboratory" name="yeast-laboratory" />
+      <small class="form-text text-muted">The name of laboratory that produced the yeast</small>
+    </div>
+    <div class="form-group" >
+      <label  for="yeast-product-id">Product ID:</label>
+      <input type="text" class="form-control" id="yeast-product-id" name="yeast-product-id" />
+      <small class="form-text text-muted">The manufacturer's Product ID label or number that identifies the particular strain of yeast.</small>
+    </div>
+    <div class="form-group" >
+      <label for="yeast-min-temperature">Minimum temperature:</label>
+      <input type="text" class="form-control" id="yeast-min-temperature" name="yeast-min-temperature" />
+      <small class="form-text text-muted">The minimum recommended temperature for fermenting the yeast (Celsius).</small>
+    </div>
+    <div class="form-group" >
+      <label for="yeast-max-temperature">Maximum temperature:</label>
+      <input type="text" class="form-control" id="yeast-max-temperature" name="yeast-max-temperature" />
+      <small class="form-text text-muted">The maximum recommended temperature for fermenting the yeast (Celsius).</small>
+    </div>
+    <div class="form-group">
+      <label for="yeast-flocculation">Flocculation of the yeast:</label>
+      <select class="form-control" name="yeast-flocculation" id="yeast-flocculation">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>Very high</option>
+      </select>
+    </div>
+    <div class="form-group" >
+      <label for="yeast-attenuation">Average attenuation for the yeast:</label>
+      <input type="text" class="form-control" id="yeast-attenuation" name="yeast-attenuation" />
+    </div>
+    <div class="form-group" >
+      <label for="yeast-max-reuse">Maximum amount of reuse for the yeast:</label>
+      <input type="text" class="form-control" id="yeast-max-reuse" name="yeast-max-reuse" />
+      <small class="form-text text-muted">How many times it is suggested the yeast to be used.</small>
+    </div>
+    <div class="form-group">
+      <label for="yeast-note">Notes for the yeast:</label>
+      <input type="text" class="form-control" id="yeast-note" name="yeast-note" />
+    </div>
+    <input type="hidden" name="request" value="add-yeast" />
+    <button type="submit" class="btn btn-primary" id="add-yeast-button">Add Yeast</button>
+  </form>
+</div>
+<div class="container-fluid content" id="search-yeasts-content" style="display:none">
+  <div class="alert alert-success centered-content" role="alert" id="add-yeast-success" style="display: none;">
+    Adding yeast was successfull, now you can find it from the system wide yeast list and use it in your own recipes.
+  </div>
+  <h2 class="centered-content">Find Yeast</h2>
+  <form id="search-yeasts-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-yeasts-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-yeasts-type-checkbox" name="search-yeasts-type-checkbox">
+        <option>Ale</option>
+        <option>Lager</option>
+        <option>Wheat</option>
+        <option>Wine</option>
+        <option>Champagne</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-yeasts-search-input" class="sr-only">keyword</label>
+      <input type="password" class="form-control" id="search-yeasts-search-input" placeholder="Keyword" name="search-yeasts-search-input" />
+    </div>
+    <input type="hidden" name="request" value="search-yeasts" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table" id="search-yeasts-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Form</th>
+    </thead>
+    <tbody id="search-yeasts-table-body">
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid content" id="add-misc-content" style="display: none;">
+  <form id="add-misc-form" class="centered-content" method="POST" action="server.php">
+    <h2>Miscallenous Ingredients</h2>
+    <p>Please check that the miscallenous ingredient does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of miscallenous ingredient.</p>
+    <div class="form-group">
+      <label for="misc-name">Name of misc:</label>
+      <input type="text" class="form-control" id="misc-name" name="misc-name" />
+    </div>
+    <div class="form-group">
+      <label for="misc-type">Type of the misc:</label>
+      <select class="form-control" name="misc-type" id="misc-type">
+        <option>Spice</option>
+        <option>Fining</option>
+        <option>Water Agent</option>
+        <option>Herb</option>
+        <option>Flavor</option>
+        <option>Other</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="misc-used">Use of the misc:</label>
+      <select class="form-control" name="misc-used" id="misc-used">
+        <option>Mash</option>
+        <option>Boil</option>
+        <option>Primary</option>
+        <option>Secondary</option>
+        <option>Bottling</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="misc-time">Amount of time:</label>
+      <input type="text" class="form-control" id="misc-time" name="misc-time" />
+      <small class="form-text text-muted">Amount of time the miscallenous ingredient is boiled, steeped, mashed, etc in minutes.</small>
+    </div>
+    <div class="form-group">
+      <label for="misc-used-note">Short description use of misc:</label>
+      <input type="text" class="form-control" id="misc-used-note" name="misc-used-note" />
+    </div>
+    <div class="form-group">
+      <label for="misc-note">Notes for the misc:</label>
+      <input type="text" class="form-control" id="misc-note" name="misc-note" />
+    </div>
+    <input type="hidden" name="request" value="add-misc" />
+    <button type="submit" class="btn btn-primary" id="add-misc-button">Add Miscallenous Ingredient</button>
+  </form>
+</div>
+<div class="container-fluid content" id="search-miscs-content" style="display:none">
+  <div class="alert alert-success centered-content" role="alert" id="add-misc-success" style="display: none;">
+    Adding miscallenous ingredient was successfull, now you can find it from the system wide miscallenous ingredients list and use it in your own recipes.
+  </div>
+  <h2 class="centered-content">Find Yeast</h2>
+  <form id="search-miscs-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-miscs-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-miscs-type-checkbox" name="search-miscs-type-checkbox">
+        <option>Spice</option>
+        <option>Fining</option>
+        <option>Water Agent</option>
+        <option>Herb</option>
+        <option>Flavor</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-miscs-search-input" class="sr-only">keyword</label>
+      <input type="password" class="form-control" id="search-miscs-search-input" placeholder="Keyword" name="search-miscs-search-input" />
+    </div>
+    <input type="hidden" name="request" value="search-miscs" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table" id="search-miscs-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+    </thead>
+    <tbody id="search-miscs-table-body">
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid content" id="add-fermentable-content" style="display: none;">
+  <form id="add-fermentable-form" class="centered-content" method="POST" action="server.php">
+    <h2>Fermentable</h2>
+    <p>Please check that the fermentable does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of fermentables.</p>
+    <div class="form-group">
+      <label for="fermentable-name">Name of fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-name" name="fermentable-name" />
+    </div>
+    <div class="form-group">
+      <label for="fermentable-supplier">Supplier of fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-supplier" name="fermentable-supplier" />
+    </div>
+    <div class="form-group">
+      <label for="fermentable-origin">Origin of the fermentable:</label>
+      <select class="form-control" name="fermentable-origin" id="fermentable-origin">
+        <option>Africa</option>
+        <option>Asia</option>
+        <option>Central America</option>
+        <option>Eastern Europe</option>
+        <option>European Union</option>
+        <option>Middle East</option>
+        <option>North America</option>
+        <option>Oceania</option>
+        <option>South America</option>
+        <option>The Caribbean</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="fermentable-type">Type of the fermentable:</label>
+      <select class="form-control" name="fermentable-type" id="fermentable-type">
+        <option>Malt</option>
+        <option>Sugar</option>
+        <option>Fruit</option>
+        <option>Extract</option>
+        <option>Other</option>
+        <option>Email us with a better list!</option>
+      </select>
+    </div>
+    <div class="form-group extract-option sugar-option" style="display: none;">
+      <label  for="fermentable-yield">Yield of the extract:</label>
+      <input type="text" class="form-control" id="fermentable-yield" name="fermentable-yield" />
+      <small class="form-text text-muted">Percent dry yield (fine grain) for the grain, or the raw yield by weight if this is an extract adjunct or sugar.</small>
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none;">
+      <label for="fermentable-color">(Important: Used for Color calculation) Color (EBC) of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-color" name="fermentable-color" />
+    </div>
+    <div class="form-group sugar-option fruit-option extract-option">
+      <label for="fermentable-after-boil">Add after boil:</label>
+      <select class="form-control" id="fermentable-after-boil" name="fermentable-after-boil">
+        <option>No</option>
+        <option>Yes</option>
+        <option>Both work</option>
+      </select>
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none;">
+      <label for="fermentable-specific-gravity">Specific gravity of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-specific-gravity" name="fermentable-specific-gravity" />
+      <small class="form-text text-muted">(Important: Used for Original Gravity calculation) Can most likely be found on the malsters website on a product data sheet and will range from about 1.025 - 1.038 depening on the type of grain and maltster.</small>
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none;">
+      <label for="fermentable-coarse-fine-diff">Coarse fine difference of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-coarse-fine-diff" name="fermentable-coarse-fine-diff" />
+      <small class="form-text text-muted">Percent difference between the coarse grain yield and fine grain yield. </small>
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none;">
+      <label for="fermentable-moisture">Moisture percentage of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-moisture" name="fermentable-moisture" />
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none">
+      <label for="fermentable-diastic-power">Diastic power (Lintner) of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-diastic-power" name="fermentable-diastatic-power" />
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none">
+      <label for="fermentable-protein">Protein percentage of the fermentable:</label>
+      <input type="text" class="form-control" id="fermentable-protein" name="fermentable-protein" />
+    </div>
+    <div class="form-group malt-option extract-option" style="display: none">
+      <label for="fermentable-max-in-batch">Recommended maximum amount (percentage) of fermentable in batch:</label>
+      <input type="text" class="form-control" id="fermentable-max-in-batch" name="fermentable-max-in-batch" />
+    </div>
+    <div class="form-group malt-option sugar-option fruit-option extract-option">
+      <label for="fermentable-recommended-mash">Should the fermentable be smashed:</label>
+      <select class="form-control" id="fermentable-recommended-mash" name="fermentable-recommended-mash">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Both work</option>
+      </select>
+      <small class="form-text text-muted">Yes if it can be smashed, no if it can be steeped.</small>
+    </div>
+    <div class="form-group malt-option sugar-option fruit-option extract-option other-option" style="display: none">
+      <label for="fermentable-note">Notes for the fermentable</label>
+      <input type="text" class="form-control" id="fermentable-note" name="fermentable-note" />
+    </div>
+    <input type="hidden" name="request" value="add-fermentable" />
+    <button type="submit" class="btn btn-primary" id="add-fermentable-button">Add Fermentable</button>
+  </form>
+</div>
+<div class="container-fluid content" id="search-fermentables-content" style="display:none">
+  <div class="alert alert-success centered-content" role="alert" id="add-fermentable-success" style="display: none;">
+    Adding fermentable was successfull, now you can find it from the system wide fermentable list and use it in your own recipes.
+  </div>
+  <h2 class="centered-content">Find Fermentables</h2>
+  <form id="search-fermentables-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-fermentables-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-fermentables-type-checkbox" name="search-fermentables-type-checkbox">
+          <option>Malt</option>
+          <option>Sugar</option>
+          <option>Fruit</option>
+          <option>Extract</option>
+          <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-fermentables-search-input" class="sr-only">Keyword</label>
+      <input type="password" class="form-control" id="search-fermentables-search-input" placeholder="Keyword" name="search-fermentables-search-input" />
+    </div>
+    <input type="hidden" name="request" value="search-fermentables" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table" id="search-fermentables-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Supplier</th>
+      <th scope="col">Name</th>
+      <th scope="col">Origin</th>
+    </thead>
+    <tbody id="search-fermentables-table-body">
+    </tbody>
+  </table>
+</div>
