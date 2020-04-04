@@ -756,7 +756,9 @@ function open_recipe(item) {
   $("#recipe-info-type").val(item.type);
   $("#recipe-info-name").val(item.name);
   $("#recipe-info-batch-size").val(item.batch_size);
+  $("#recipe-info-batch-size").change();
   $("#recipe-info-boil-size").val(item.boil_size);
+  $("#recipe-info-boil-size").change();
   $("#recipe-info-boil-time").val(item.boil_time);
   $("#recipe-info-note").val(item.note);
   $("#fermentables-malt-amount").val(item.fermentables_amount);
@@ -882,13 +884,17 @@ function open_recipe(item) {
     $(".recipe-yeast-amount-type:last").val(item.yeasts[x].amount_type);
     $(".recipe-yeast-starter-required:last").val(item.yeasts[x].starter_required);
   }
+  $("#modify-recipe-button").show();
+  $("#save-recipe-button").html("Save as new recipe");
+  CalculateOG();
+  $("#recipe-yeasts-list").find(".recipe-yeast-attenuation").each(function() {
+    CalculateFG(this);
+  });
   CalculateIBU();
   CalculateABV();
   CalculateCalories();
   CalculateEBC();
   CalculateTinseth();
-  $("#modify-recipe-button").show();
-  $("#save-recipe-button").html("Save as new recipe");
 }
 
 $("#search-your-recipes-form").on("submit", function(evt) {
