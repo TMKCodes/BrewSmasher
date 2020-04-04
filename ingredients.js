@@ -20,6 +20,7 @@ $(".home-navbar-button").on("click", function() {
   get_tip_jar_monthly_balance();
   $("#home-content").show();
   $(".nav-link").removeClass("active");
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#register-navbar-button").on("click", function() {
@@ -28,6 +29,7 @@ $("#register-navbar-button").on("click", function() {
   $("#register-content").show();
   $(".nav-link").removeClass("active");
   $("#register-navbar-button").addClass("active");
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#login-navbar-button").on("click", function() {
@@ -36,6 +38,7 @@ $("#login-navbar-button").on("click", function() {
   $("#login-content").show();
   $(".nav-link").removeClass("active");
   $("#login-navbar-button").addClass("active");
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#recipes-navbar-button").on("click", function() {
@@ -44,6 +47,7 @@ $("#recipes-navbar-button").on("click", function() {
   $("#recipes-content").show();
   $(".nav-link").removeClass("active");
   $("#recipes-navbar-button").addClass("active");
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#brewlog-navbar-button").on("click", function() {
@@ -52,12 +56,14 @@ $("#brewlog-navbar-button").on("click", function() {
   $("#brewlog-content").show();
   $(".nav-link").removeClass("active");
   $("#brewlog-navbar-button").addClass("active");
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#search-fermentable-navbar-button").on("click", function() {
     $(".content").hide();
     $(".alert").hide();
     $("#search-fermentables-content").show();
+      $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#addfermentable-navbar-button").on("click", function() {
@@ -80,42 +86,49 @@ $("#addfermentable-navbar-button").on("click", function() {
   } else if(selected == "Other") {
     $(".other-option").show();
   }
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-fermentable-content").show();
 });
 
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-hop-content").show();
 });
 
 $("#search-hops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-hops-content").show();
 });
 
 $("#addyeast-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-yeast-content").show();
 });
 
 $("#search-yeast-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-yeasts-content").show();
 });
 
 $("#addmisc-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-misc-content").show();
 });
 
 $("#search-misc-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-miscs-content").show();
 });
 
@@ -518,6 +531,7 @@ $("#add-fermentable-form").on("submit", function(evt) {
   if($("#fermentable-name").val() == '') {
     return;
   }
+  if($("#fermentable"))
   var data = $(this).serialize() + "&uid=" + Cookies.get("user-id");
   console.log(data);
   var request = $.ajax({

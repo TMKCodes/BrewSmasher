@@ -12,6 +12,7 @@ body {
   margin: auto;
 }
 
+
 .form-inline {
   margin-top: 8px;
 }
@@ -20,6 +21,121 @@ td > button {
   margin-right: 8px;
 }
 
+!td > button {
+  padding: 5px;
+}
+
+td:has(button) {
+  padding: 5px;
+}
+
 .jumbotron {
   margin-bottom: 15px;
+}
+
+.recipe-block {
+  margin-bottom: 15px;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+  padding: 15px;
+}
+
+#recipe-info-note {
+  width: 100%;
+  height: 100px;
+}
+
+#recipe-info-form > table {
+  width: 100%;
+}
+
+#search-ingredients-form {
+  width: 100%;
+}
+
+#search-ingredients-what {
+  margin-right: 15px;
+}
+
+#recipe-fermentable-search-form > table {
+  width: 100%;
+}
+
+#fermentables-list-input {
+  width: 100%;
+}
+
+#recipe-hop-search-form > table {
+  width: 100%;
+}
+
+#hops-list-input {
+  width: 100%;
+}
+
+#recipe-misc-search-form > table {
+  width: 100%;
+}
+
+#miscs-list-input {
+  width: 100%;
+}
+
+#recipe-yeast-search-form > table {
+  width: 100%;
+}
+
+#yeasts-list-input {
+  width: 100%;
+}
+
+input[disabled]:disabled {
+  background: #8e99ab;
+}
+
+select[disabled]:disabled {
+   background-color: #8e99ab;
+}
+
+td > table {
+  width: 100%;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }

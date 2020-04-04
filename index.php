@@ -11,39 +11,14 @@
 
     gtag('config', 'UA-160990370-1');
   </script>
-  <script>
-  function includeHTML() {
-    var z, i, elmnt, file, xhttp;
-    /* Loop through a collection of all HTML elements: */
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
-        }
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /* Exit the function: */
-        return;
-      }
-    }
-  }
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css" />
+  <!--
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  -->
   <link rel="stylesheet" href="style.css" />
+  <title>BrewSmasher</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="login-navbar">
@@ -67,7 +42,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logged-navbar-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="logged-navbar-content">
+    <div class="collapse navbar-collapse" id="logged-navbar-content" style="display: hidden">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,31 +62,64 @@
             <a class="dropdown-item" id="search-misc-navbar-button">Browse Others</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="display: none;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Recipes
+            Storage
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" id="addnewres-navbar-button">Add new Recipe</a>
-            <a class="dropdown-item" id="broyours-navbar-button">Browse yours</a>
+            <a class="dropdown-item" id="add-ingredient-to-storage-navbar-button">Add ingredient</a>
+              <a class="dropdown-item" id="browse-ingredients-in-storage-navbar-button">Browse your ingredient</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="broothers-navbar-button">Browse others</a>
+            <a class="dropdown-item" id="add-equipment-to-storage-navbar-button">Add equipment</a>
+              <a class="dropdown-item" id="browse-equipments-in-storage-navbar-button">Browse your equipment</a>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Brewlog
+            Planning
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" id="add-new-recipe-navbar-button">Add new recipe</a>
+            <a class="dropdown-item" id="browse-your-recipes-navbar-button" >Browse your recipes</a>
+            <a class="dropdown-item" id="browse-other-recipes-navbar-button" style="display: none;">Browse other recipes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="add-new-water-navbar-button" style="display: none;">Add new water profile</a>
+            <a class="dropdown-item" id="browse-your-waters-navbar-button" style="display: none;">Browse your water profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="add-new-brewprocess-navbar-button" style="display: none;">Add new brew process</a>
+            <a class="dropdown-item" id="browse-your-brewprocesss-navbar-button" style="display: none;">Browse your brew processes</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown"  style="display: none;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Brewing
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" id="startbrew-navbar-button">Start brewing</a>
-            <a class="dropdown-item" id="readlog-navbar-button">Read log</a>
+            <a class="dropdown-item" id="readlog-navbar-button">Brewlog</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="community-navbar-button">Community</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Community
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" id="discord" href="https://discord.gg/hzNV74Z">Discord Server</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="code" href="https://github.com/TMKCodes/BrewSmasher">Code</a>
+            <a class="dropdown-item" id="project" href="https://github.com/TMKCodes/BrewSmasher/projects/1">Project</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="patreon" href="https://www.patreon.com/user?u=32673977&fan_landing=true">Patreon</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="other-tools-navbar-button">Tools</a>
+        <li class="nav-item dropdown"  style="display: none;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tools
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" id="import-beer-xml">Import BeerXML v1.0</a>
+            <a class="dropdown-item" id="lovebond-to-ebc">Lovebond to EBC</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="logout-navbar-button">Logout</a>
@@ -120,40 +128,53 @@
     </div>
   </nav>
   <div class="container-fluid content" id="home-content">
-    <div class="centered-content">
+    <div class="centered-content" style="display:hidden">
       <div class="alert alert-success" role="alert" id="register-success" style="display: none;">
         Now please feel free to log in. We do not not require you to confirm your email, so it is up to you that it was correct.
       </div>
     </div>
-    <div class="jumbotron centered-content">
+    <div class="jumbotron centered-content home-page" style="display:hidden">
       <h1 class="display-4">Welcome</h1>
       <p class="lead">This is a place meant for Craft Brewers.</p>
       <hr class="my-4">
       <p>As a Craft Brewer you can create your recipes, keep brewing log and share your data to others. So if this is a tool for you, it is free to use.</p>
     </div>
-    <div class="jumbotron centered-content">
+    <div class="jumbotron centered-content home-page"style="display:hidden">
       <h1 class="display-4">Beta</h1>
       <p class="lead">As you might notice, this is still beta.</p>
       <hr class="my-4">
       <p>Since the work is in progress to build one of the coolest brew calculators (if my ego can say so?) remember all
         of the submitted data may be lost at any moment and the backend code might change while you are doing stuff to test the system.</p>
     </div>
-    <div class="jumbotron centered-content">
-      <h1 class="display-4">The Tip Jar</h1>
-      <p class="lead">Since nothing is free.</p>
+    <!--
+    <div class="jumbotron centered-content" id="crafty">
+      <h1 class="display-4">Corona</h1>
       <hr class="my-4">
-      <p>I will not ask you specifically to send me any cash, but if you can I will accept Bitcoin. The bitcoin you send to me will
-        be used for the costs of this service and my somewhat full time work. Since the server costs will raise when more users join
-        to use the system I hope we can keep the service up. Though the reason why I only accept bitcoin is because I don't want people
-        around here finding out that it is me who is actually developing beer brewing software. So allow me some secrecy. If you
-        find me from somewhere else, you can ask me why.</p>
-      <p>Current server cost: 6 usd/month</p>
-      <p>Current monthly tips: <span id="tip-jar-btc"></span> btc/month</p>
-      <img src="res/qr.png" />
+      <p>Open letter about self destructing because of idiocy. This was supposed to become craft brewing tool,
+        but scrap that. Since Corona has made people worried about being laid off, about their healthcare, how to pay
+        bills and how to buy medicine. I know that is something to worry about, but I gotta say to you. There are other
+        ways to suffer because of Corona, other than money.
+        <br />
+        <br />
+        I can not see my own son because her mother used corona as an excuse to cancel meetings until further notice. So do you
+        think that doing crowdfunding to focus on a hobby is a bad idea? When you actually keep suffering inside 24/7.
+        Since you might not see your almost 3 year old son for even a year, you are going to miss his birthday and
+        can not give him a present. So yes worry about money. I understand it, when I am already living under US minimum
+        hourly wage and have to prioritize everything. This is why I'm not going to do a free tool for people like you while
+        suffering and isolating myself at home. Which is worse? Mental health problems, because a father yearns to see his beloved son.
+        Which can not actually be fixed with money or problems that are easily fixed by throwing cash around?
+        <br />
+        <br />
+        One thing I've learned. It's really actually better to isolate yourself from idiocy.
+        <br />
+        <br />
+        Thank you sincerely @Crafty I left because of you.
     </div>
+  -->
   </div>
-  
-  <div w3-include-html="ingredients.html"></div>
+
+  <?php require_once("ingredients.html"); ?>
+  <?php require_once("recipes.html"); ?>
 
   <div class="container-fluid content" Id="login-content" style="display: none;">
     <form id="login-form" class="centered-content" method="POST" action="server.php">
@@ -214,14 +235,12 @@
       <button type="submit" class="btn btn-primary" id="register-button">Register</button>
     </form>
   </div>
-  <script>
-  includeHTML();
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="ingredients.js"></script>
+  <script src="recipes.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

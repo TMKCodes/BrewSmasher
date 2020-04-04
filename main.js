@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   $('[data-toggle="tooltip"]').tooltip();
   get_tip_jar_monthly_balance();
@@ -14,4 +12,7 @@ $(document).ready(function() {
     $("#login-navbar").hide();
     $("#logged-navbar").show();
   }
+  $(this).find("input:disabled").each(function() {
+    $(this).css("background-color", "gray");
+  });
 });

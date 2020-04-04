@@ -1,5 +1,5 @@
 <div class="container-fluid content" id="add-hop-content" style="display: none;">
-  <form id="add-hop-form" class="centered-content" method="POST" action="server.php">
+  <form id="add-hop-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Hops</h2>
     <p>Please check that the hop does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of hops.</p>
     <div class="form-group">
@@ -94,11 +94,11 @@
   </form>
 </div>
 <div class="container-fluid content" id="search-hops-content" style="display:none">
-  <div class="alert alert-success centered-content" role="alert" id="add-hop-success" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="add-hop-success" style="display: none;">
     Adding hop was successfull, now you can find it from the system wide hop list and use it in your own recipes.
   </div>
-  <h2 class="centered-content">Find Hops</h2>
-  <form id="search-hops-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+  <h2 class="centered-content recipe-block">Find Hops</h2>
+  <form id="search-hops-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
       <label for="search-hops-type-checkbox" class="sr-only">Type:</label>
       <select class="form-control" id="search-hops-type-checkbox" name="search-hops-type-checkbox">
@@ -114,7 +114,7 @@
     <input type="hidden" name="request" value="search-hops" />
     <button type="submit" class="btn btn-primary mb-2">Search</button>
   </form>
-  <table class="table" id="search-hops-table" style="display: none;">
+  <table class="table centered-content recipe-block" id="search-hops-table" style="display: none;">
     <thead>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -125,7 +125,7 @@
   </table>
 </div>
 <div class="container-fluid content" id="add-yeast-content" style="display: none;">
-  <form id="add-yeast-form" class="centered-content" method="POST" action="server.php">
+  <form id="add-yeast-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Yeasts</h2>
     <p>Please check that the yeast does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of yeasts.</p>
     <div class="form-group">
@@ -148,6 +148,7 @@
       <label for="yeast-form">Form of the yeast:</label>
       <select class="form-control" name="yeast-form" id="yeast-form">
         <option>Dry</option>
+        <option>Liquid</option>
         <option>Slant</option>
         <option>Culture</option>
         <option>Email us with a better list!</option>
@@ -200,11 +201,11 @@
   </form>
 </div>
 <div class="container-fluid content" id="search-yeasts-content" style="display:none">
-  <div class="alert alert-success centered-content" role="alert" id="add-yeast-success" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="add-yeast-success" style="display: none;">
     Adding yeast was successfull, now you can find it from the system wide yeast list and use it in your own recipes.
   </div>
-  <h2 class="centered-content">Find Yeast</h2>
-  <form id="search-yeasts-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+  <h2 class="centered-content recipe-block">Find Yeast</h2>
+  <form id="search-yeasts-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
       <label for="search-yeasts-type-checkbox" class="sr-only">Type:</label>
       <select class="form-control" id="search-yeasts-type-checkbox" name="search-yeasts-type-checkbox">
@@ -223,7 +224,7 @@
     <input type="hidden" name="request" value="search-yeasts" />
     <button type="submit" class="btn btn-primary mb-2">Search</button>
   </form>
-  <table class="table" id="search-yeasts-table" style="display: none;">
+  <table class="table centered-content recipe-block" id="search-yeasts-table" style="display: none;">
     <thead>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -234,7 +235,7 @@
   </table>
 </div>
 <div class="container-fluid content" id="add-misc-content" style="display: none;">
-  <form id="add-misc-form" class="centered-content" method="POST" action="server.php">
+  <form id="add-misc-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Miscallenous Ingredients</h2>
     <p>Please check that the miscallenous ingredient does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of miscallenous ingredient.</p>
     <div class="form-group">
@@ -282,11 +283,11 @@
   </form>
 </div>
 <div class="container-fluid content" id="search-miscs-content" style="display:none">
-  <div class="alert alert-success centered-content" role="alert" id="add-misc-success" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="add-misc-success" style="display: none;">
     Adding miscallenous ingredient was successfull, now you can find it from the system wide miscallenous ingredients list and use it in your own recipes.
   </div>
-  <h2 class="centered-content">Find Yeast</h2>
-  <form id="search-miscs-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+  <h2 class="centered-content recipe-block">Find Yeast</h2>
+  <form id="search-miscs-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
       <label for="search-miscs-type-checkbox" class="sr-only">Type:</label>
       <select class="form-control" id="search-miscs-type-checkbox" name="search-miscs-type-checkbox">
@@ -305,7 +306,7 @@
     <input type="hidden" name="request" value="search-miscs" />
     <button type="submit" class="btn btn-primary mb-2">Search</button>
   </form>
-  <table class="table" id="search-miscs-table" style="display: none;">
+  <table class="table centered-content recipe-block" id="search-miscs-table" style="display: none;">
     <thead>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -315,7 +316,7 @@
   </table>
 </div>
 <div class="container-fluid content" id="add-fermentable-content" style="display: none;">
-  <form id="add-fermentable-form" class="centered-content" method="POST" action="server.php">
+  <form id="add-fermentable-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Fermentable</h2>
     <p>Please check that the fermentable does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of fermentables.</p>
     <div class="form-group">
@@ -371,9 +372,9 @@
       </select>
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
-      <label for="fermentable-specific-gravity">Specific gravity of the fermentable:</label>
+      <label for="fermentable-specific-gravity">(Important: Used for Original Gravity calculation) Specific gravity of the fermentable:</label>
       <input type="text" class="form-control" id="fermentable-specific-gravity" name="fermentable-specific-gravity" />
-      <small class="form-text text-muted">(Important: Used for Original Gravity calculation) Can most likely be found on the malsters website on a product data sheet and will range from about 1.025 - 1.038 depening on the type of grain and maltster.</small>
+      <small class="form-text text-muted">(Important: Used for Original Gravity calculation) Can most likely be found on the malsters website on a product data sheet and will range from about 1.025 - 1.038 depening on the type of grain and maltster. Can be calculed from Extract Yield Dry Basis Fine Grind (DBFG) percentage with the following formula: SG = 1 + (DBFG / 100) * 0.04621.</small>
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
       <label for="fermentable-coarse-fine-diff">Coarse fine difference of the fermentable:</label>
@@ -414,11 +415,11 @@
   </form>
 </div>
 <div class="container-fluid content" id="search-fermentables-content" style="display:none">
-  <div class="alert alert-success centered-content" role="alert" id="add-fermentable-success" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="add-fermentable-success" style="display: none;">
     Adding fermentable was successfull, now you can find it from the system wide fermentable list and use it in your own recipes.
   </div>
-  <h2 class="centered-content">Find Fermentables</h2>
-  <form id="search-fermentables-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+  <h2 class="centered-content recipe-block">Find Fermentables</h2>
+  <form id="search-fermentables-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
       <label for="search-fermentables-type-checkbox" class="sr-only">Type:</label>
       <select class="form-control" id="search-fermentables-type-checkbox" name="search-fermentables-type-checkbox">
@@ -436,7 +437,7 @@
     <input type="hidden" name="request" value="search-fermentables" />
     <button type="submit" class="btn btn-primary mb-2">Search</button>
   </form>
-  <table class="table" id="search-fermentables-table" style="display: none;">
+  <table class="table centered-content recipe-block" id="search-fermentables-table" style="display: none;">
     <thead>
       <th scope="col">#</th>
       <th scope="col">Supplier</th>

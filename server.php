@@ -9,6 +9,7 @@ require_once("fermentable.php");
 require_once("hop.php");
 require_once("yeast.php");
 require_once("misc.php");
+require_once("recipe.php");
 
 header('Content-type: application/json');
 
@@ -81,6 +82,66 @@ function HandleData($data, $dblocation) {
     $result = $misc->getListByKeyword($data['search-miscs-type-checkbox'], $data['search-miscs-search-input']);
     unset($misc);
     SendResult($result);
+  } else if($data['request'] == "save-recipe") {
+    $recipe = new Recipe($dblocation);
+    $result = $recipe->add($data['packet']);
+    unset($recipe);
+    SendResult($result);
+  } else if($data['request'] == "search-your-recipes") {
+    $recipe = new Recipe($dblocation);
+    $result = $recipe->getPrivateList($data['search-your-recipes-type-checkbox'], $data['uid'], $data['search-your-recipes-input']);
+    unset($recipe);
+    SendResult($result);
+  } else if($data['request'] == "get-every-ingredient") {
+    $fermentable = new Fermentable($dblocation);
+    $Malt = $fermentable->getListByKeyword("Malt", "");
+    $Sugar = $fermentable->getListByKeyword("Sugar", "");
+    $Fruit = $fermentable->getListByKeyword("Fruit", "");
+    $Extract = $fermentable->getListByKeyword("Extract", "");
+    $Other1 = $fermentable->getListByKeyword("Other", "");
+    unset($fermentable);
+    $hop = new Hop($dblocation);
+    $Bittering = $hop->getListByKeyword("Bittering", "");
+    $Aroma = $hop->getListByKeyword("Aroma", "");
+    $Both = $hop->getListByKeyword("Both", "");
+    unset($hop);
+    $yeast = new Yeast($dblocation);
+    $Ale = $yeast->getListByKeyword("Ale", "");
+    $Lager = $yeast->getListByKeyword("Lager", "");
+    $Wheat = $yeast->getListByKeyword("Wheat", "");
+    $Wine = $yeast->getListByKeyword("Wine", "");
+    $Champagne = $yeast->getListByKeyword("Champagne", "");
+    $Other2 = $yeast->getListByKeyword("Other", "");
+    unset($yeast);
+    $misc = new Misc($dblocation);
+    $Spice = $misc->getListByKeyword("Spice", "");
+    $Fining = $misc->getListByKeyword("Fining", "");
+    $WaterAgent = $misc->getListByKeyword("Water Agent", "");
+    $Herb = $misc->getListByKeyword("Herb", "");
+    $Flavor = $misc->getListByKeyword("Flavor", "");
+    $Other3 = $misc->getListByKeyword("Other", "");
+    unset($misc);
+    SendResult(array("success" => "true",
+      "fermentables" => array("malt" => $Malt['fermentables'],
+                              "sugar" => $Sugar['fermentables'],
+                              "fruit" => $Fruit['fermentables'],
+                              "extract" => $Extract['fermentables'],
+                              "other" => $Other1['fermentables']),
+      "hops" => array("bittering" => $Bittering['hops'],
+                      "aroma" => $Aroma['hops'],
+                      "both" => $Both['hops']),
+      "yeasts" => array("ale" => $Ale['yeasts'],
+                        "lager" => $Lager['yeasts'],
+                        "wheat" => $Wheat['yeasts'],
+                        "wine" => $Wine['yeasts'],
+                        "champagne" => $Champagne['yeasts'],
+                        "other" => $Other2['yeasts']),
+      "miscs" => array("spice" => $Spice['miscs'],
+                        "fining" => $Fining['miscs'],
+                        "water_agent" => $WaterAgent['miscs'],
+                        "herb" => $Herb['miscs'],
+                        "flavor" => $Flavor['miscs'],
+                        "other" => $Other3['miscs'])));
   }
 }
 ?>

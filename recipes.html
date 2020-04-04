@@ -1,0 +1,326 @@
+<div class="container-fluid content centered-content" id="browse-your-recipes" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="add-recipe-success" style="display: none;">
+    Adding recipe was successfull, now you can find it from your recipe list.
+  </div>
+  <h2 class="centered-content recipe-block">Find Recipe</h2>
+  <form id="search-your-recipes-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-your-recipes-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-your-recipes-type-checkbox" name="search-your-recipes-type-checkbox">
+        <option>All Grain Beer</option>
+        <option>Extract Beer</option>
+        <option>Partial mash Beer</option>
+        <option>Cider</option>
+        <option>Graff</option>
+        <option>Mead</option>
+        <option>Braggot</option>
+        <option>Wine</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-your-recipes-input" class="sr-only">Keyword</label>
+      <input type="password" class="form-control" id="search-your-recipes-input" placeholder="Keyword" name="search-your-recipes-input" />
+    </div>
+    <input type="hidden" name="request" value="search-your-recipes" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table centered-content recipe-block" id="search-your-recipes-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Open</th>
+      <th scope="col">Remove</th>
+    </thead>
+    <tbody id="search-your-recipes-table-body">
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid content centered-content" id="add-recipe" style="display: none;">
+  <div class="recipe-block">
+    <h5>Recipe stats</h5>
+    <table class="table">
+      <tr>
+        <td>Batch Size: <span id="batch-size"></span></td>
+        <td>Boil Size: <span id="boil-size"></span></td>
+        <td colspan="2">Efficiency: <span id="efficiency"></span></td>
+      </tr>
+      <tr>
+        <td colspan="2">OG: <span id="original-gravity"></span></td>
+        <td colspan="2">FG: <span id="final-gravity"></span></td>
+      </tr>
+      <tr>
+        <td colspan="2">Color: <span id="color-ebc"></span> EBC / <span id="color-srm"></span> SRM <span id="color-square" style="font-size: 25pt">&#11044;</span></td>
+        <td colspan="2">Bitterness: <span id="bitterness"></span> (tinseth)</td>
+      </tr>
+      <tr>
+        <td>Alcohol: <span id="alcohol"></span> ABV</td>
+        <td>IBU/OG: <span id="ibu-og"></span> </td>
+        <td colspan="2">Calories: <span id="calories"></span> per 340 Gram / 10 oz</td>
+      </tr>
+    </table>
+  </div>
+  <div class="recipe-block">
+    <h5>Scale <span id="scale-amount">100</span></h5>
+    <form id="recipe-scale">
+      <div class="form-group slidecontainer">
+        <input class="form-control" type="range" min="0" max="200" id="recipe-scale-range" name="recipe-scale-range" value="100" class="slider"/>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success mb-2" id="apply-scale">Apply</button>
+      </div>
+    </form>
+  </div>
+  <div class="recipe-block">
+    <h5>Recipe Info</h5>
+    <form id="recipe-info-form">
+      <table>
+        <tr>
+          <td colspan="4">
+            <div class="form-group">
+              <select class="form-control" name="recipe-info-type" id="recipe-info-type">
+                <option selected="selected">Type of recipe</option>
+                <option>All Grain Beer</option>
+                <option>Extract Beer</option>
+                <option>Partial mash Beer</option>
+                <option>Cider</option>
+                <option>Graff</option>
+                <option>Mead</option>
+                <option>Braggot</option>
+                <option>Wine</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div class="form-group">
+              <input type="text" class="form-control" id="recipe-info-name" name="recipe-info-name" placeholder="Name your recipe"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              <label for="recipe-info-batch-size">Batch Size (Liters)</label>
+              <input type="number" class="form-control" id="recipe-info-batch-size" name="recipe-info-batch-size" value="21"
+                data-toggle="tooltip" data-placement="bottom" title="Final volume of wort transferred to fermenter."/>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <label for="recipe-info-boil-size">Boil Size (Liters)</label>
+              <input type="number" class="form-control" id="recipe-info-boil-size" name="recipe-info-boil-size" value="25"
+                data-toggle="tooltip" data-placement="bottom" title="Volume of wort before boiling."/>
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="form-group">
+              <label for="recipe-info-boil-time">Boil time (Minutes)</label>
+              <input type="number" min="5" max="180" step="5" class="form-control" id="recipe-info-boil-time" name="recipe-info-boil-time" value="60"
+                data-toggle="tooltip" data-placement="bottom" title="Amount of time in minutes for boiling."/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              <label for="recipe-info-batch-size-gallon">Batch Size (Gallon)</label>
+              <input type="number" class="form-control" id="recipe-info-batch-size-gallon" name="recipe-info-batch-size-gallon" value="4"
+                data-toggle="tooltip" data-placement="bottom" title="Final volume of wort transferred to fermenter."/>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <label for="recipe-info-boil-size-gallon">Boil Size (Gallon)</label>
+              <input type="number" class="form-control" id="recipe-info-boil-size-gallon" name="recipe-info-boil-size-gallon" value="5"
+                data-toggle="tooltip" data-placement="bottom" title="Volume of wort before boiling."/>
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="form-group">
+              <label for="recipe-info-efficiency">Efficiency (%)</label>
+              <input type="number" min="0" max="100" class="form-control" id="recipe-info-efficiency" name="recipe-info-efficiency" value="75"
+                data-toggle="tooltip" data-placement="bottom" title="How effective you are extracting sugar. If you don't know leave at 75 %."/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div class="form-group">
+              <label for="recipe-info-note">Description/notes</label>
+              <textarea id="recipe-info-note" name="recipe-info-note"></textarea>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="recipe-block">
+    <h5>Search ingredients</h5>
+    <form id="search-ingredients-form" class="form-inline centered-content tablet-wider" method="POST" action="server.php">
+      <div class="form-group mb-2">
+        <label for="search-ingredients-what" class="sr-only">Ingredient:</label>
+        <select class="form-control" id="search-ingredients-what" name="search-ingredients-what">
+          <option>Fermentables</option>
+          <option>Hops</option>
+          <option>Yeasts</option>
+          <option>Miscallenous</option>
+        </select>
+      </div>
+      <div class="form-group mb-2">
+        <label for="search-ingredients-type" class="sr-only">Type:</label>
+        <select class="form-control" id="search-ingredients-type" name="search-ingredients-type">
+            <option>Malt</option>
+            <option>Sugar</option>
+            <option>Fruit</option>
+            <option>Extract</option>
+            <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="search-ingredients-search" class="sr-only">Search</label>
+        <input type="password" class="form-control" id="search-ingredients-search" placeholder="Keyword" name="search-ingredients-search" />
+      </div>
+      <input type="hidden" name="request" id="search-ingredients-request" value="search-ingredients" />
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+    <table class="table" id="search-ingredients-table" style="display: none;">
+      <thead id="search-ingredients-head">
+      </thead>
+      <tbody id="search-ingredients-body">
+      </tbody>
+    </table>
+  </div>
+  <div class="recipe-block">
+      <h5>Fermentables</h5>
+      <form id="recipe-fermentable-search-form">
+        <table>
+          <tr>
+            <td>
+              <div class="form-group">
+                <label for="fermentables-malt-amount">Fermentable bill (kg)</label>
+                <input type="number" class="form-control" id="fermentables-malt-amount" name="fermentables-malt-amount" onclick="this.select()" />
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label for="fermentables-malt-amount-lb">Fermentable bill (lb)</label>
+                <input type="number" class="form-control" id="fermentables-malt-amount-lb" name="fermentables-malt-amount-lb" onclick="this.select()" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="form-group">
+                Quick Search:
+                <input list="fermentables-list" name="fermentables-list" id="fermentables-list-input">
+                <datalist id="fermentables-list">
+                </datalist>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table class="table" id="recipe-fermentables-list">
+
+        </table>
+      </form>
+  </div>
+  <div class="recipe-block">
+      <h5>Hops</h5>
+      <form id="recipe-hop-search-form">
+        <table>
+          <tr>
+            <td colspan="2">
+              <div class="form-group">
+                Quick Search:
+                <input list="hops-list" name="hops-list" id="hops-list-input">
+                <datalist id="hops-list">
+                </datalist>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table class="table" id="recipe-hops-list">
+
+        </table>
+      </form>
+  </div>
+  <div class="recipe-block">
+      <h5>Miscallenous ingredients</h5>
+      <form id="recipe-misc-search-form">
+        <table>
+          <tr>
+            <td colspan="2">
+              <div class="form-group">
+                Quick Search:
+                <input list="miscs-list" name="miscs-list" id="miscs-list-input">
+                <datalist id="miscs-list">
+                </datalist>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table class="table" id="recipe-miscs-list">
+
+        </table>
+      </form>
+  </div>
+  <div class="recipe-block">
+      <h5>Yeast</h5>
+      <form id="recipe-yeast-search-form">
+        <table>
+          <tr>
+            <td colspan="2">
+              <div class="form-group">
+                Quick Search:
+                <input list="yeasts-list" name="yeasts-list" id="yeasts-list-input">
+                <datalist id="yeasts-list">
+                </datalist>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table class="table" id="recipe-yeasts-list">
+
+        </table>
+      </form>
+  </div>
+  <div class="recipe-block">
+      <h5>Instructions</h5>
+  </div>
+  <div class="alert alert-success recipe-block" role="alert" id="add-recipe-failed-no-type" style="display: none;">
+    You need to select type of your recipe
+  </div>
+  <div class="alert alert-success recipe-block" role="alert" id="add-recipe-failed-name" style="display: none;">
+    Recipe with too similar name already exists.
+  </div>
+  <div class="recipe-block">
+    <form id="recipe-misc-search-form">
+      <table>
+        <tr>
+          <td>
+            <div class="form-group mb-2">
+              <label for="recipe-share" class="sr-only">Share:</label>
+              <select class="form-control" id="recipe-share" name="recipe-share" style="width: 100%;">
+                  <option>Private</option>
+                  <option>Public</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <div class="form-group mb-2">
+              <button type="button" class="btn btn-success" id="modify-recipe-button" style="display: none; width: 100%;">Modify Recipe</button>
+            </div>
+          </td>
+          <td>
+            <div class="form-group mb-2">
+              <button type="button" class="btn btn-success" id="save-recipe-button" style="width: 100%;">Save Recipe</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "American-Amber-Ale" : {
+    "Quantitive" : {
+      "OG" : [1.048, 1.058],
+      "FG" : [1.024, 1.018],
+      "ABV" : [4.4, 6.1],
+      "IBU" : [0.62, 0.78],
+      "BU:GU" : [0.62, 0.78],
+      "SRM" : [11, 18],
+      "CO2V" : [2, 2.5],
+      "Attenuation" : [69, 75]
+    },
+    "Commercial-Examples" : ["HopBack Amber", "Boont Amber", "Red Seal"],
+    "Style-A-Z" : {
+      "Alcohol" : "Mild to Noticeable",
+      "Carbonation" : "Medium to Fast Rising Bubbles",
+      "Clarity" : "Clear to Slight Haze",
+      "Color" : "Copper to Reddish Brown",
+      "Country" : "United States",
+      "Food-pairing" : {
+        "Cheese" : "Medium Cheddar",
+        "Entree" : "Barbecue",
+        "Dessert" : "Banana Bound Cake"
+      },
+      "Glass" : "Tulip",
+      "Hop-Aroma/Flavor" : "Citrus like character is acceptable",
+      "Common-Hop-Ingredients" : ["Horizon", "Cascade", "Centennial"],
+      "Malt-Aroma/Flavor" : "Caramel",
+      "Common-Malt-Ingredients" : "English Pale Ale or American Two-Row, Crystal, Victory",
+      "Palate-Body" : "Mouth-Coating",
+      "Palate-Carbonation" : "Medium to High",
+      "Palate-Length/Finish" : "Short to Medium",
+      "Serving-Temperature-fahrenheit" : [45, 55],
+      "Water-Types" : "Varies",
+      "Yeasts" : {
+        "Type" : "Ale",
+        "Phenols" : "Not common to style",
+        "Esters" : "There may be below levels of fruity-ester flavor"
+      }
+    }
+  }
+}
