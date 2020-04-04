@@ -92,6 +92,11 @@ function HandleData($data, $dblocation) {
     $result = $recipe->getPrivateList($data['search-your-recipes-type-checkbox'], $data['uid'], $data['search-your-recipes-input']);
     unset($recipe);
     SendResult($result);
+  } else if($data['request'] == "delete-recipe") {
+    $recipe = new Recipe($dblocation);
+    $result = $recipe->delete($data['id']);
+    unset($recipe);
+    SendResult($result);
   } else if($data['request'] == "get-every-ingredient") {
     $fermentable = new Fermentable($dblocation);
     $Malt = $fermentable->getListByKeyword("Malt", "");

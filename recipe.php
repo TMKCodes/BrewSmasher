@@ -136,6 +136,40 @@ class Recipe {
     }
   }
 
+  public function remove($id) {
+    $stmt = $this->db->prepare("DELETE FROM recipes WHERE id = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $stmt = $this->db->prepare("DELETE FROM recipe_fermentables WHERE rip = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $stmt = $this->db->prepare("DELETE FROM recipe_hops WHERE rip = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $stmt = $this->db->prepare("DELETE FROM recipe_miscs WHERE rip = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $stmt = $this->db->prepare("DELETE FROM recipe_yeasts WHERE rip = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    return array("success" => "true");
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM recipes WHERE type = :type;");
     $stmt->bindValue(":type", $type);
