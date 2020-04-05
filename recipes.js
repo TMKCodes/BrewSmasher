@@ -175,9 +175,9 @@ function updateWeightByG(input, alpha) {
   var g = $(input).val();
   var oz = (g * 0.0352739619).toFixed(2);
   $(input).parent().parent().parent().parent().find("#recipe-hop-oz").val(oz);
-  if(typeof(alpha) == "string" && alpha.search("-")) {
+  if(typeof(alpha) == "string" && alpha.search("-") == -1) {
     var r = alpha.split("-");
-    alpha = parseFloat(r[1]);
+    alpha = parseFloat(r[0]);
   }
   if(alpha > 1) {
     alpha = alpha / 100;
@@ -191,9 +191,9 @@ function updateWeightByOz(input, alpha) {
   var oz = $(input).val();
   var g = (oz / 0.0352739619).toFixed(2);
   $(input).parent().parent().parent().parent().find("#recipe-hop-g").val(g);
-  if(typeof(alpha) == "string" && alpha.search("-")) {
+  if(typeof(alpha) == "string" && alpha.search("-") == -1) {
     var r = alpha.split("-");
-    alpha = parseFloat(r[1]);
+    alpha = parseFloat(r[0]);
   }
   if(alpha > 1) {
     alpha = alpha / 100;
