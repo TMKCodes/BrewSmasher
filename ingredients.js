@@ -309,7 +309,7 @@ function ShowYeastData(item, index) {
   console.log(item);
   console.log(index);
   $(".yeast-info-row").remove();
-  var html = "<tr class=\"hop-info-row\">";
+  var html = "<tr class=\"yeast-info-row\">";
     html += "<td colspan=\"10\">";
       html += "<table class=\"table\" id=\"yeast-data-table\">";
         html += "<thead><th scope=\"col\">Identifier</th><th scope=\"col\">Value</th></thead>";
@@ -410,7 +410,7 @@ $("#search-yeasts-form").on("submit", function(evt) {
 function ShowMiscData(item, index) {
   item = JSON.parse(unescape(item));
   $(".misc-info-row").remove();
-  var html = "<tr class=\"hop-info-row\">";
+  var html = "<tr class=\"misc-info-row\">";
     html += "<td colspan=\"10\">";
       html += "<table class=\"table\" id=\"misc-data-table\">";
         html += "<thead><th scope=\"col\">Identifier</th><th scope=\"col\">Value</th></thead>";
