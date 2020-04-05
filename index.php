@@ -17,6 +17,7 @@
   <!--
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
   -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
   <link rel="stylesheet" href="style.css" />
   <title>BrewSmasher</title>
 </head>
@@ -127,6 +128,10 @@
       </ul>
     </div>
   </nav>
+  <div class="alert text-center cookiealert" role="alert">
+    <b>Do you like cookies?</b> We use cookies to ensure you get the best experience on our website. <a href="https://cookiesandyou.com/" target="_blank">Learn more</a>
+    <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">I agree</button>
+  </div>
   <div class="container-fluid content" id="home-content">
     <div class="centered-content" style="display:hidden">
       <div class="alert alert-success" role="alert" id="register-success" style="display: none;">
@@ -139,12 +144,12 @@
       <hr class="my-4">
       <p>As a Craft Brewer you can create your recipes, keep brewing log and share your data to others. So if this is a tool for you, it is free to use.</p>
     </div>
-    <div class="jumbotron centered-content home-page"style="display:hidden">
-      <h1 class="display-4">Beta</h1>
-      <p class="lead">As you might notice, this is still beta.</p>
+    <div class="jumbotron centered-content home-page" style="display:hidden">
+      <h1 class="display-4">Version 0.2</h1>
+      <p class="lead">First production release</p>
       <hr class="my-4">
-      <p>Since the work is in progress to build one of the coolest brew calculators (if my ego can say so?) remember all
-        of the submitted data may be lost at any moment and the backend code might change while you are doing stuff to test the system.</p>
+      <p>Hello everyone. This is the launch of production releases of Brewsmasher. The development will happen at <a href="https://beta.brewsmasher.com">beta</a> and all your data will be safe at <a href="https://brewsmasher.com">production</a></p>
+        <p>The release includes public ingredient addition, browsing and private recipe creation, browsing and modification.</p>
     </div>
     <!--
     <div class="jumbotron centered-content" id="crafty">
@@ -239,6 +244,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
   <script src="ingredients.js"></script>
   <script src="recipes.js"></script>
   <script src="main.js"></script>
