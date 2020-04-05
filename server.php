@@ -94,7 +94,7 @@ function HandleData($data, $dblocation) {
     SendResult($result);
   } else if($data['request'] == "delete-recipe") {
     $recipe = new Recipe($dblocation);
-    $result = $recipe->delete($data['id']);
+    $result = $recipe->remove($data['id']);
     unset($recipe);
     SendResult($result);
   } else if($data['request'] == "get-every-ingredient") {

@@ -712,6 +712,7 @@ $("#save-recipe-button").on("click", function() {
     if(response.success == "true") {
       $(".content").hide();
       $("#browse-your-recipes").show();
+      $("#search-your-recipes-form").submit();
       $("#add-recipe-success").show();
     } else {
       if(response.reason == "Too similar name to another existing recipe wich has same used") {
@@ -750,8 +751,36 @@ function clear_recipe() {
   $("#recipe-yeasts-list").html("");
 }
 
-function open_recipe(item) {
+
+function delete_recipe(item) {
   item = JSON.parse(unescape(item));
+  var data = "request=delete-recipe&id=" + item.id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#remove-recipe-error").hide();
+      $("#search-your-recipes-form").submit();
+      $("#remove-recipe-success").show();
+    } else {
+      $("#search-your-recipes-form").submit();
+      $("#remove-recipe-success").hide();
+      $("#remove-recipe-error").show();
+    }
+  });
+}
+
+function open_recipe(item) {
+  citem = item;
+  item = JSON.parse(unescape(item));
+  $("#remove-recipe-success").hide();
+  $("#remove-recipe-error").hide();
   $("#add-new-recipe-navbar-button").click();
   $("#recipe-info-type").val(item.type);
   $("#recipe-info-name").val(item.name);
@@ -885,6 +914,10 @@ function open_recipe(item) {
     $(".recipe-yeast-starter-required:last").val(item.yeasts[x].starter_required);
   }
   $("#modify-recipe-button").show();
+  $("#modify-recipe-button").on("click", function() {
+    delete_recipe(citem);
+    $("#save-recipe-button").click();
+  });
   $("#save-recipe-button").html("Save as new recipe");
   CalculateOG();
   $("#recipe-yeasts-list").find(".recipe-yeast-attenuation").each(function() {
@@ -904,7 +937,8 @@ $("#search-your-recipes-form").on("submit", function(evt) {
   var request = $.ajax({
     url : "server.php",
     type : "POST",
-    data : data
+    data : data,
+    async : false
   });
   request.done(function(response, textStatus, jqXHR) {
     console.log(response);

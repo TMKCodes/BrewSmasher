@@ -2,6 +2,12 @@
   <div class="alert alert-success centered-content recipe-block" role="alert" id="add-recipe-success" style="display: none;">
     Adding recipe was successfull, now you can find it from your recipe list.
   </div>
+  <div class="alert alert-error centered-content ecipe-block" role="alert" id="remove-recipe-error" style="display: none;">
+    Failed to remove recipe.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-recipe-success" style="display: none;">
+    Recipe removed.
+  </div>
   <h2 class="centered-content recipe-block">Find Recipe</h2>
   <form id="search-your-recipes-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
@@ -290,10 +296,10 @@
   <div class="recipe-block">
       <h5>Instructions</h5>
   </div>
-  <div class="alert alert-success recipe-block" role="alert" id="add-recipe-failed-no-type" style="display: none;">
+  <div class="alert alert-error recipe-block" role="alert" id="add-recipe-failed-no-type" style="display: none;">
     You need to select type of your recipe
   </div>
-  <div class="alert alert-success recipe-block" role="alert" id="add-recipe-failed-name" style="display: none;">
+  <div class="alert alert-error recipe-block" role="alert" id="add-recipe-failed-name" style="display: none;">
     Recipe with too similar name already exists.
   </div>
   <div class="recipe-block">
