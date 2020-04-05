@@ -206,13 +206,16 @@ $("#search-fermentables-form").on("submit", function(evt) {
         html += "<td>" + item.origin + "</td>";
         html += "</tr>";
       });
+      $("#search-yeasts-table-body").html("");
+      $("#search-hops-table-body").html("");
+      $("#search-miscs-table-body").html("");
       $("#search-fermentables-table-body").html(html);
       $("#add-fermentable-success").hide();
       $("#search-fermentables-table").show();
     } else {
-    $("#search-fermentables-table-body").html("");
-    $("#add-fermentable-success").hide();
-    $("#search-fermentables-table").show();
+      $("#search-fermentables-table-body").html("");
+      $("#add-fermentable-success").hide();
+      $("#search-fermentables-table").show();
     }
   });
 });
@@ -293,6 +296,9 @@ $("#search-hops-form").on("submit", function(evt) {
         html += "<td>" + item.origin + "</td>";
         html += "</tr>";
       });
+      $("#search-fermentables-table-body").html("");
+      $("#search-miscs-table-body").html("");
+      $("#search-yeasts-table-body").html("");
       $("#search-hops-table-body").html(html);
       $("#add-hops-success").hide();
       $("#search-hops-table").show();
@@ -396,6 +402,9 @@ $("#search-yeasts-form").on("submit", function(evt) {
         html += "<td>" + item.form + "</td>";
         html += "</tr>";
       });
+      $("#search-fermentables-table-body").html("");
+      $("#search-hops-table-body").html("");
+      $("#search-miscs-table-body").html("");
       $("#search-yeasts-table-body").html(html);
       $("#add-yeasts-success").hide();
       $("#search-yeasts-table").show();
@@ -488,6 +497,9 @@ $("#search-miscs-form").on("submit", function(evt) {
         html += "<td>" + item.name + "</td>";
         html += "</tr>";
       });
+      $("#search-fermentables-table-body").html("");
+      $("#search-hops-table-body").html("");
+      $("#search-yeasts-table-body").html("");
       $("#search-miscs-table-body").html(html);
       $("#add-misc-success").hide();
       $("#search-miscs-table").show();
