@@ -53,6 +53,17 @@ class Yeast {
       return array("success" => "false", "reason" => "For some reason insertion to database failed.");
     }
   }
+
+  public function delete($id) {
+    $stmt = $this->db->prepare("DELETE FROM yeasts WHERE id = :id");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    return array("success" => "true");
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM yeasts WHERE type = :type;");
     $stmt->bindValue(":type", $type);
@@ -66,6 +77,7 @@ class Yeast {
     }
     return array("success" => "true", "yeasts" => $rows);
   }
+
   public function getListByKeyword($type, $keyword) {
     if($keyword == "") {
       return $this->getListByType($type);

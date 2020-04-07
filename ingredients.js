@@ -19,8 +19,8 @@ $(".home-navbar-button").on("click", function() {
   $(".alert").hide();
   get_tip_jar_monthly_balance();
   $("#home-content").show();
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $(".nav-link").removeClass("active");
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#register-navbar-button").on("click", function() {
@@ -28,8 +28,8 @@ $("#register-navbar-button").on("click", function() {
   $(".alert").hide();
   $("#register-content").show();
   $(".nav-link").removeClass("active");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#register-navbar-button").addClass("active");
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#login-navbar-button").on("click", function() {
@@ -37,8 +37,8 @@ $("#login-navbar-button").on("click", function() {
   $(".alert").hide();
   $("#login-content").show();
   $(".nav-link").removeClass("active");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#login-navbar-button").addClass("active");
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#recipes-navbar-button").on("click", function() {
@@ -46,8 +46,8 @@ $("#recipes-navbar-button").on("click", function() {
   $(".alert").hide();
   $("#recipes-content").show();
   $(".nav-link").removeClass("active");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#recipes-navbar-button").addClass("active");
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#brewlog-navbar-button").on("click", function() {
@@ -55,20 +55,24 @@ $("#brewlog-navbar-button").on("click", function() {
   $(".alert").hide();
   $("#brewlog-content").show();
   $(".nav-link").removeClass("active");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#brewlog-navbar-button").addClass("active");
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
 });
 
 $("#search-fermentable-navbar-button").on("click", function() {
-    $(".content").hide();
-    $(".alert").hide();
-    $("#search-fermentables-content").show();
-      $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $(".content").hide();
+  $(".alert").hide();
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("#search-fermentables-content").show();
 });
 
 $("#addfermentable-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
   var selected = $("#fermentable-type").children("option:selected").val();
   $(".malt-option").hide();
   $(".sugar-option").hide();
@@ -86,51 +90,131 @@ $("#addfermentable-navbar-button").on("click", function() {
   } else if(selected == "Other") {
     $(".other-option").show();
   }
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-fermentable-content").show();
 });
 
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-hop-content").show();
 });
 
 $("#search-hops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-hops-content").show();
 });
 
 $("#addyeast-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-yeast-content").show();
 });
 
 $("#search-yeast-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-yeasts-content").show();
 });
 
 $("#addmisc-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#add-misc-content").show();
 });
 
 $("#search-misc-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-    $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("input[type=text]").val("");
+  $("input[type=number]").val("");
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $("#search-miscs-content").show();
 });
+
+function deleteFermentable(id) {
+  var data = "request=delete-fermentable&id=" + id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#search-fermentables-form").submit();
+    } else {
+    }
+  });
+}
+
+function deleteHop(id) {
+  var data = "request=delete-hop&id=" + id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#search-hops-form").submit();
+    } else {
+    }
+  });
+}
+
+function deleteMisc(id) {
+  var data = "request=delete-misc&id=" + id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#search-miscs-form").submit();
+    } else {
+    }
+  });
+}
+
+function deleteYeast(id) {
+  var data = "request=delete-yeast&id=" + id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#search-yeasts-form").submit();
+    } else {
+    }
+  });
+}
 
 function ShowFermentableData(item, index) {
   item = JSON.parse(unescape(item));
@@ -175,8 +259,11 @@ function ShowFermentableData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Modify</button>";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            if(item.sender == Cookies.get("user-id")) {
+              html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteFermentable(" + item.id + ")\">Delete</button>";
+            }
           html += "</td></tr>";
         html += "</tbody>";
       html += "</table>";
@@ -266,8 +353,11 @@ function ShowHopData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Modify</button>";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            if(item.sender == Cookies.get("user-id")) {
+              html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteHop(" + item.id + ")\">Delete</button>";
+            }
           html += "</td></tr>";
         html += "</tbody>";
       html += "</table>";
@@ -346,8 +436,11 @@ function ShowYeastData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Modify</button>";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            if(item.sender == Cookies.get("user-id")) {
+              html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteYeast(" + item.id + ")\">Delete</button>";
+            }
           html += "</td></tr>";
         html += "</tbody>";
       html += "</table>";
@@ -439,8 +532,11 @@ function ShowMiscData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Modify</button>";
-            html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
+            if(item.sender == Cookies.get("user-id")) {
+              html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteMisc(" + item.id + ")\">Delete</button>";
+            }
           html += "</td></tr>";
         html += "</tbody>";
       html += "</table>";

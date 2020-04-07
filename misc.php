@@ -43,6 +43,17 @@ class Misc {
       return array("success" => "false", "reason" => "For some reason insertion to database failed.");
     }
   }
+
+  public function delete($id) {
+    $stmt = $this->db->prepare("DELETE FROM miscs WHERE id = :id");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    return array("success" => "true");
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM miscs WHERE type = :type;");
     $stmt->bindValue(":type", $type);
@@ -56,6 +67,7 @@ class Misc {
     }
     return array("success" => "true", "miscs" => $rows);
   }
+
   public function getListByKeyword($type, $keyword) {
     if($keyword == "") {
       return $this->getListByType($type);

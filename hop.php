@@ -56,6 +56,17 @@ class Hop {
       return array("success" => "false", "reason" => "For some reason insertion to database failed.");
     }
   }
+
+  public function delete($id) {
+    $stmt = $this->db->prepare("DELETE FROM hops WHERE id = :id");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    return array("success" => "true");
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM hops WHERE type = :type;");
     $stmt->bindValue(":type", $type);
@@ -69,6 +80,7 @@ class Hop {
     }
     return array("success" => "true", "hops" => $rows);
   }
+
   public function getListByKeyword($type, $keyword) {
     if($keyword == "") {
       return $this->getListByType($type);

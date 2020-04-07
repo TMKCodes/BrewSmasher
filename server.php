@@ -82,6 +82,26 @@ function HandleData($data, $dblocation) {
     $result = $misc->getListByKeyword($data['search-miscs-type-checkbox'], $data['search-miscs-search-input']);
     unset($misc);
     SendResult($result);
+  } else if($data['request'] == "delete-fermentable") {
+    $fermentable = new Fermentable($dblocation);
+    $result = $fermentable->delete($data['id']);
+    unset($fermentable);
+    SendResult($result);
+  } else if($data['request'] == "delete-hop") {
+    $hop = new Hop($dblocation);
+    $result = $hop->delete($data['id']);
+    unset($hop);
+    SendResult($result);
+  } else if($data['request'] == "delete-misc") {
+    $misc = new Misc($dblocation);
+    $result = $misc->delete($data['id']);
+    unset($misc);
+    SendResult($result);
+  } else if($data['request'] == "delete-yeast") {
+    $yeast = new Yeast($dblocation);
+    $result = $yeast->delete($data['id']);
+    unset($yeast);
+    SendResult($result);
   } else if($data['request'] == "save-recipe") {
     $recipe = new Recipe($dblocation);
     $result = $recipe->add($data['packet']);

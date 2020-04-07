@@ -24,11 +24,11 @@
     </div>
     <div class="form-group">
       <label for="hop-alpha">Alpha percentage of hop:</label>
-      <input type="text" class="form-control" id="hop-alpha" name="hop-alpha" />
+      <input type="number" step="0.001" class="form-control" id="hop-alpha" name="hop-alpha" />
     </div>
     <div class="form-group" >
       <label  for="hop-beta">Hop beta percentage:</label>
-      <input type="text" class="form-control" id="hop-beta" name="hop-beta" />
+      <input type="number" step="0.001" class="form-control" id="hop-beta" name="hop-beta" />
     </div>
     <div class="form-group">
       <label for="hop-use">Preferred usage of the hop:</label>
@@ -61,7 +61,7 @@
     </div>
     <div class="form-group" >
       <label for="hop-hsi">Hop stability index:</label>
-      <input type="text" class="form-control" id="hop-hsi" name="hop-hsi" />
+      <input type="number" step="0.001" class="form-control" id="hop-hsi" name="hop-hsi" />
       <small class="form-text text-muted">Percentage of hop alpha lost in 6 months of storage.</small>
     </div>
     <div class="form-group" >
@@ -71,19 +71,19 @@
     </div>
     <div class="form-group" >
       <label  for="hop-humulene">Hop humulene percentage:</label>
-      <input type="text" class="form-control" id="hop-humulene" name="hop-humulene" />
+      <input type="number" step="0.001" class="form-control" id="hop-humulene" name="hop-humulene" />
     </div>
     <div class="form-group" >
       <label  for="hop-caryophyllene">Hop caryophyllene percentage:</label>
-      <input type="text" class="form-control" id="hop-caryophyllene" name="hop-caryophyllene" />
+      <input type="number" step="0.001" class="form-control" id="hop-caryophyllene" name="hop-caryophyllene" />
     </div>
     <div class="form-group" >
       <label  for="hop-cohumulone">Hop cohumulone percentage:</label>
-      <input type="text" class="form-control" id="hop-cohumulone" name="hop-cohumulone" />
+      <input type="number" step="0.001" class="form-control" id="hop-cohumulone" name="hop-cohumulone" />
     </div>
     <div class="form-group" >
       <label  for="hop-myrcene">Hop myrcene percentage:</label>
-      <input type="text" class="form-control" id="hop-myrcene" name="hop-myrcene" />
+      <input type="number" step="0.001" class="form-control" id="hop-myrcene" name="hop-myrcene" />
     </div>
     <div class="form-group">
       <label for="hop-note">Notes for the hop:</label>
@@ -166,12 +166,12 @@
     </div>
     <div class="form-group" >
       <label for="yeast-min-temperature">Minimum temperature:</label>
-      <input type="text" class="form-control" id="yeast-min-temperature" name="yeast-min-temperature" />
+      <input type="number" step="0.001" class="form-control" id="yeast-min-temperature" name="yeast-min-temperature" />
       <small class="form-text text-muted">The minimum recommended temperature for fermenting the yeast (Celsius).</small>
     </div>
     <div class="form-group" >
       <label for="yeast-max-temperature">Maximum temperature:</label>
-      <input type="text" class="form-control" id="yeast-max-temperature" name="yeast-max-temperature" />
+      <input type="number" step="0.001" class="form-control" id="yeast-max-temperature" name="yeast-max-temperature" />
       <small class="form-text text-muted">The maximum recommended temperature for fermenting the yeast (Celsius).</small>
     </div>
     <div class="form-group">
@@ -185,11 +185,11 @@
     </div>
     <div class="form-group" >
       <label for="yeast-attenuation">Average attenuation for the yeast:</label>
-      <input type="text" class="form-control" id="yeast-attenuation" name="yeast-attenuation" />
+      <input type="number" step="0.001" class="form-control" id="yeast-attenuation" name="yeast-attenuation" />
     </div>
     <div class="form-group" >
       <label for="yeast-max-reuse">Maximum amount of reuse for the yeast:</label>
-      <input type="text" class="form-control" id="yeast-max-reuse" name="yeast-max-reuse" />
+      <input type="number" step="0.001" class="form-control" id="yeast-max-reuse" name="yeast-max-reuse" />
       <small class="form-text text-muted">How many times it is suggested the yeast to be used.</small>
     </div>
     <div class="form-group">
@@ -267,7 +267,7 @@
     </div>
     <div class="form-group">
       <label for="misc-time">Amount of time:</label>
-      <input type="text" class="form-control" id="misc-time" name="misc-time" />
+      <input type="number" step="0.001" class="form-control" id="misc-time" name="misc-time" />
       <small class="form-text text-muted">Amount of time the miscallenous ingredient is boiled, steeped, mashed, etc in minutes.</small>
     </div>
     <div class="form-group">
@@ -356,12 +356,12 @@
     </div>
     <div class="form-group extract-option sugar-option" style="display: none;">
       <label  for="fermentable-yield">Yield of the extract:</label>
-      <input type="text" class="form-control" id="fermentable-yield" name="fermentable-yield" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-yield" name="fermentable-yield" />
       <small class="form-text text-muted">Percent dry yield (fine grain) for the grain, or the raw yield by weight if this is an extract adjunct or sugar.</small>
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
       <label for="fermentable-color">(Important: Used for Color calculation) Color (EBC) of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-color" name="fermentable-color" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-color" name="fermentable-color" />
     </div>
     <div class="form-group sugar-option fruit-option extract-option">
       <label for="fermentable-after-boil">Add after boil:</label>
@@ -373,29 +373,29 @@
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
       <label for="fermentable-specific-gravity">(Important: Used for Original Gravity calculation) Specific gravity of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-specific-gravity" name="fermentable-specific-gravity" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-specific-gravity" name="fermentable-specific-gravity" />
       <small class="form-text text-muted">(Important: Used for Original Gravity calculation) Can most likely be found on the malsters website on a product data sheet and will range from about 1.025 - 1.038 depening on the type of grain and maltster. Can be calculed from Extract Yield Dry Basis Fine Grind (DBFG) percentage with the following formula: SG = 1 + (DBFG / 100) * 0.04621.</small>
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
       <label for="fermentable-coarse-fine-diff">Coarse fine difference of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-coarse-fine-diff" name="fermentable-coarse-fine-diff" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-coarse-fine-diff" name="fermentable-coarse-fine-diff" />
       <small class="form-text text-muted">Percent difference between the coarse grain yield and fine grain yield. </small>
     </div>
     <div class="form-group malt-option extract-option" style="display: none;">
       <label for="fermentable-moisture">Moisture percentage of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-moisture" name="fermentable-moisture" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-moisture" name="fermentable-moisture" />
     </div>
     <div class="form-group malt-option extract-option" style="display: none">
       <label for="fermentable-diastic-power">Diastic power (Lintner) of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-diastic-power" name="fermentable-diastatic-power" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-diastic-power" name="fermentable-diastatic-power" />
     </div>
     <div class="form-group malt-option extract-option" style="display: none">
       <label for="fermentable-protein">Protein percentage of the fermentable:</label>
-      <input type="text" class="form-control" id="fermentable-protein" name="fermentable-protein" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-protein" name="fermentable-protein" />
     </div>
     <div class="form-group malt-option extract-option" style="display: none">
       <label for="fermentable-max-in-batch">Recommended maximum amount (percentage) of fermentable in batch:</label>
-      <input type="text" class="form-control" id="fermentable-max-in-batch" name="fermentable-max-in-batch" />
+      <input type="number" step="0.001" class="form-control" id="fermentable-max-in-batch" name="fermentable-max-in-batch" />
     </div>
     <div class="form-group malt-option sugar-option fruit-option extract-option">
       <label for="fermentable-recommended-mash">Should the fermentable be smashed:</label>

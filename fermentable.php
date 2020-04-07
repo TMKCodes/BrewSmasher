@@ -60,6 +60,17 @@ class Fermentable {
       return array("success" => "false", "reason" => "For some reason insertion to database failed.");
     }
   }
+
+  public function delete($id) {
+    $stmt = $this->db->prepare("DELETE FROM fermentables WHERE id = :id");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    return array("success" => "true");
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM fermentables WHERE type = :type;");
     $stmt->bindValue(":type", $type);
@@ -73,6 +84,7 @@ class Fermentable {
     }
     return array("success" => "true", "fermentables" => $rows);
   }
+  
   public function getListByKeyword($type, $keyword) {
     if($keyword == "") {
       return $this->getListByType($type);
