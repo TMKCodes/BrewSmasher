@@ -790,6 +790,11 @@ function open_recipe(item) {
   $("#recipe-info-boil-size").change();
   $("#recipe-info-boil-time").val(item.boil_time);
   $("#recipe-info-note").val(item.note);
+  if(item.efficiency != "") {
+    $("#recipe-info-efficiency").val(item.efficiency);
+  } else {
+    $("#recipe-info-efficiency").val(75);
+  }
   $("#fermentables-malt-amount").val(item.fermentables_amount);
   $("#recipe-share").val(item.share);
   for(var x = 0; x < item.fermentables.length; x++) {
