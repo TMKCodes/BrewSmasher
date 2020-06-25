@@ -94,6 +94,12 @@ $("#addfermentable-navbar-button").on("click", function() {
   $("#add-fermentable-content").show();
 });
 
+function modifyFermantable(item) {
+  item = JSON.parse(unescape(item));
+
+  $("#addfermentable-navbar-button").click();
+}
+
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();

@@ -81,7 +81,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" id="add-new-recipe-navbar-button">Add new recipe</a>
-            <a class="dropdown-item" id="browse-your-recipes-navbar-button" >Browse your recipes</a>
+            <a class="dropdown-item" id="browse-your-recipes-navbar-button">Browse your recipes</a>
             <a class="dropdown-item" id="browse-other-recipes-navbar-button" style="display: none;">Browse other recipes</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="add-new-water-navbar-button" style="display: none;">Add new water profile</a>

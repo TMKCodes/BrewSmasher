@@ -919,6 +919,7 @@ function open_recipe(item) {
     $("#save-recipe-button").click();
   });
   $("#save-recipe-button").html("Save as new recipe");
+  $(".recipe-fermentable-kg").change();
   CalculateOG();
   $("#recipe-yeasts-list").find(".recipe-yeast-attenuation").each(function() {
     CalculateFG(this);
@@ -991,6 +992,15 @@ $("#add-new-recipe-navbar-button").on("click", function() {
   $("#search-ingredients-request").val("search-fermentables");
   $("#scale-amount").html($("#recipe-scale-range").val());
   $("#efficiency").html($("#recipe-info-efficiency").val() + " %");
+  $("#original-gravity").html("");
+  $("#final-gravity").html("");
+  $("#color-ebc").html("");
+  $("#color-srm").html("");
+  $("#color-square").html("");
+  $("#bitterness").html("");
+  $("#alcohol").html("");
+  $("#ibu-og").html("");
+  $("#calories").html("");
   $("#recipe-info-batch-size-gallon").val(($("#recipe-info-batch-size").val() / 3.78541178).toFixed(2));
   var batch_liter = $("#recipe-info-batch-size").val();
   var batch_gallon = $("#recipe-info-batch-size-gallon").val();
