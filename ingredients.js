@@ -94,30 +94,6 @@ $("#addfermentable-navbar-button").on("click", function() {
   $("#add-fermentable-content").show();
 });
 
-function deleteFermentable(item) {
-  item = JSON.parse(unescape(item));
-  var data = "request=delete-fermentable&id=" + item.id + "&uid=" + Cookies.get("user-id");
-  console.log(data);
-  var request = $.ajax({
-    url : "server.php",
-    type : "POST",
-    data : data,
-    async : false
-  });
-  request.done(function(response, textStatus, jqXHR) {
-    console.log(response);
-    if(response.success == "true") {
-      $("#remove-fermentable-error").hide();
-      $("#search-fermentables-form").submit();
-      $("#remove-fermentable-success").show();
-    } else {
-      $("#search-fermentables-form").submit();
-      $("#remove-fermentable-success").hide();
-      $("#remove-fermentable-error").show();
-    }
-  });
-}
-
 function modifyFermantable(item) {
   item = JSON.parse(unescape(item));
   $("#addfermentable-navbar-button").click();
@@ -158,6 +134,48 @@ function modifyFermantable(item) {
   });
   $("#add-fermentable-button").html("Add as a new fermentable");
 }
+
+function modifyHop(item) {
+  item = JSON.parse(unescape(item));
+  $("#addhops-navbar-button").click();
+  $("#hop-name").val(item.name);
+  $("#hop-origin").val(item.origin);
+  $("#hop-alpha").val(item.alpha);
+  $("#hop-beta").val(item.beta);
+  $("#hop-use").val(item.use);
+  $("#hop-type").val(item.type);
+  $("#hop-form").val(item.form);
+  $("#hop-hsi").val(item.hsi);
+  $("#hop-substitues").val(item.substitues);
+  $("#hop-humulene").val(item.humulene);
+  $("#hop-caryophyllene").val(item.caryophyllene);
+  $("#hop-cohumulone").val(item.cohumulone);
+  $("#hop-myrcene").val(item.myrcene);
+  $("#hop-note").val(item.note);
+  $("#modify-hop-button").show();
+  $("#modify-hop-button").on("click", function() {
+    $("#add-hop-request").val("modify-hop");
+    var data = $("#add-hop-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
+    console.log(data);
+    var request = $.ajax({
+      url : "server.php",
+      type : "POST",
+      data : data,
+      async : false
+    });
+    request.done(function(response, textStatus, jqXHR) {
+      console.log(response);
+      if(response.success == "true") {
+        $("#add-hop-content").hide();
+        $("#modify-hop-success").show();
+        $("#search-hops-content").show();
+      } else {
+      }
+    });
+  });
+  $("#add-hop-button").html("Add as a new hop");
+}
+
 
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
@@ -418,7 +436,7 @@ function ShowHopData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"modifyHop('" + escape(JSON.stringify(item)) + "')\">Modify</button>";
             html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
             if(item.sender == Cookies.get("user-id")) {
               html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteHop(" + item.id + ")\">Delete</button>";

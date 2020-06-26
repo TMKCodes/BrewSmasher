@@ -57,11 +57,64 @@ class Hop {
     }
   }
 
+  public function modify($data) {
+    $stmt = $this->db->prepare("SELECT * FROM hops WHERE id = :id;");
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $rows = array();
+    while($row = $res->fetchArray()) {
+      array_push($rows, $row);
+    }
+    // TODO: Use $rows to save the backup of fermentable.
+    $stmt = $this->db->prepare("UPDATE hops " .
+                                "SET sender = :sender, " .
+                                "name = :name, " .
+                                "origin = :origin, " .
+                                "alpha = :alpha, " .
+                                "used = :used, " .
+                                "type = :type, " .
+                                "form = :form, " .
+                                "beta = :beta, " .
+                                "hsi = :hsi, " .
+                                "substitutes = :substitutes, " .
+                                "humulene = :humulene, " .
+                                "caryophyllene = :caryophyllene, " .
+                                "cohumulone = :cohumulone, " .
+                                "myrcene = :myrcene, " .
+                                "note = :note " .
+                                "WHERE id = :id;");
+    $stmt->bindValue(":sender", $data['uid']);
+    $stmt->bindValue(":name", $data['hop-name']);
+    $stmt->bindValue(":origin", $data['hop-origin']);
+    $stmt->bindValue(":alpha", $data['hop-alpha']);
+    $stmt->bindValue(":used", $data['hop-use']);
+    $stmt->bindValue(":type", $data['hop-type']);
+    $stmt->bindValue(":form", $data['hop-form']);
+    $stmt->bindValue(":beta", $data['hop-beta']);
+    $stmt->bindValue(":hsi", $data['hop-hsi']);
+    $stmt->bindValue(":substitutes", $data['hop-substitutes']);
+    $stmt->bindValue(":humulene", $data['hop-humulene']);
+    $stmt->bindValue(":caryophyllene", $data['hop-caryophyllene']);
+    $stmt->bindValue(":cohumulone", $data['hop-cohumulone']);
+    $stmt->bindValue(":myrcene", $data['hop-myrcene']);
+    $stmt->bindValue(":note", $data['hop-note']);
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res != false) {
+      return array("success" => "true");
+    } else {
+      return array("success" => "false", "reason" => "For some reason update failed.");
+    }
+  }
+
   public function delete($id) {
     $stmt = $this->db->prepare("DELETE FROM hops WHERE id = :id");
     $stmt->bindValue(":id", $id);
     $res = $stmt->execute();
-    if($res == null) {
+    if($res == null ) {
       return array("success" => "false", "reason" => "Database query failed.");
     }
     return array("success" => "true");
@@ -72,7 +125,7 @@ class Hop {
     $stmt->bindValue(":type", $type);
     $res = $stmt->execute();
     if($res == null) {
-      return array("success" => "false", "reason" => "Database query failed.");
+      return array("s = :success" => "false", "reason" => "Database query failed.");
     }
     $rows = array();
     while($row = $res->fetchArray()) {

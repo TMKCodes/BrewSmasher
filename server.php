@@ -92,6 +92,11 @@ function HandleData($data, $dblocation) {
     $result = $fermentable->delete($data['id']);
     unset($fermentable);
     SendResult($result);
+  } else if($data['request'] == "modify-hop") {
+    $hop = new Hop($dblocation);
+    $result = $hop->modify($data);
+    unset($hop);
+    SendResult($result);
   } else if($data['request'] == "delete-hop") {
     $hop = new Hop($dblocation);
     $result = $hop->delete($data['id']);
