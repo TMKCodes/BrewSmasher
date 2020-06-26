@@ -410,13 +410,24 @@
       <label for="fermentable-note">Notes for the fermentable</label>
       <input type="text" class="form-control" id="fermentable-note" name="fermentable-note" />
     </div>
-    <input type="hidden" name="request" value="add-fermentable" />
+    <input type="hidden" id="add-fermentable-request" name="request" value="add-fermentable" />
+
+    <button type="submit" class="btn btn-primary" id="modify-fermentable-button" style="display: none;">Modify Fermentable</button>
     <button type="submit" class="btn btn-primary" id="add-fermentable-button">Add Fermentable</button>
   </form>
 </div>
 <div class="container-fluid content" id="search-fermentables-content" style="display:none">
   <div class="alert alert-success centered-content recipe-block" role="alert" id="add-fermentable-success" style="display: none;">
     Adding fermentable was successfull, now you can find it from the system wide fermentable list and use it in your own recipes.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="modify-fermentable-success" style="display: none;">
+    Modifying fermentable was successfull, now you can find it from the system wide fermentable list and use it in your own recipes.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-fermentable-success" style="display: none;">
+    Removing fermentable was successfull.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-fermentable-error" style="display: none;">
+    Removing fermentable failed.
   </div>
   <h2 class="centered-content recipe-block">Find Fermentables</h2>
   <form id="search-fermentables-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">

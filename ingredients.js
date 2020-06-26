@@ -94,10 +94,69 @@ $("#addfermentable-navbar-button").on("click", function() {
   $("#add-fermentable-content").show();
 });
 
+function deleteFermentable(item) {
+  item = JSON.parse(unescape(item));
+  var data = "request=delete-fermentable&id=" + item.id + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#remove-fermentable-error").hide();
+      $("#search-fermentables-form").submit();
+      $("#remove-fermentable-success").show();
+    } else {
+      $("#search-fermentables-form").submit();
+      $("#remove-fermentable-success").hide();
+      $("#remove-fermentable-error").show();
+    }
+  });
+}
+
 function modifyFermantable(item) {
   item = JSON.parse(unescape(item));
-
   $("#addfermentable-navbar-button").click();
+  $("#fermentable-name").val(item.name);
+  $("#fermentable-supplier").val(item.supplier);
+  $("#fermentable-origin").val(item.origin);
+  $("#fermentable-type").val(item.type);
+  $("#fermentable-color").val(item.color);
+  $("#fermentable-specific-gravity").val(item.specific_gravity);
+  $("#fermentable-coarse-fine-diff").val(item.coarse_fine_diff);
+  $("#fermentable-moisture").val(item.moisture);
+  $("#fermentable-diastatic-power").val(item.diastatic_power);
+  $("#fermentable-protein").val(item.protein);
+  $("#fermentable-max-in-batch").val(item.max_in_batch);
+  $("#fermentable-recommended_mash").val(item.recommended_mash);
+  $("#fermentable-note").val(item.note);
+
+  $("#modify-fermentable-button").show();
+  $("#modify-fermentable-button").on("click", function() {
+    $("#add-fermentable-request").val("modify-fermentable");
+    var data = $("#add-fermentable-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
+    console.log(data);
+    var request = $.ajax({
+      url : "server.php",
+      type : "POST",
+      data : data,
+      async : false
+    });
+    request.done(function(response, textStatus, jqXHR) {
+      console.log(response);
+      if(response.success == "true") {
+        $("#add-fermentable-content").hide();
+        $("#modify-fermentable-success").show();
+        $("#search-fermentables-content").show();
+      } else {
+      }
+    });
+  });
+  $("#add-fermentable-button").html("Add as a new fermentable");
 }
 
 $("#addhops-navbar-button").on("click", function() {
@@ -265,7 +324,7 @@ function ShowFermentableData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"modifyFermantable('" + escape(JSON.stringify(item)) + "')\">Modify</button>";
             html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
             if(item.sender == Cookies.get("user-id")) {
               html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteFermentable(" + item.id + ")\">Delete</button>";
@@ -635,6 +694,7 @@ $("#fermentable-type").on("change", function() {
 });
 
 $("#add-fermentable-form").on("submit", function(evt) {
+  $("#add-fermentable-request").val("add-fermentable");
   evt.preventDefault();
   if($("#fermentable-origin").val() == '') {
     return;

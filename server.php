@@ -82,6 +82,11 @@ function HandleData($data, $dblocation) {
     $result = $misc->getListByKeyword($data['search-miscs-type-checkbox'], $data['search-miscs-search-input']);
     unset($misc);
     SendResult($result);
+  } else if($data['request'] == "modify-fermentable") {
+    $fermentable = new Fermentable($dblocation);
+    $result = $fermentable->modify($data);
+    unset($fermentable);
+    SendResult($result);
   } else if($data['request'] == "delete-fermentable") {
     $fermentable = new Fermentable($dblocation);
     $result = $fermentable->delete($data['id']);
