@@ -71,6 +71,8 @@ $("#search-fermentable-navbar-button").on("click", function() {
 $("#addfermentable-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+  $("#modify-fermentable-button").hide();
+  $("#add-fermentable-button").html("Add fermentable");
   $("input[type=text]").val("");
   $("input[type=number]").val("");
   var selected = $("#fermentable-type").children("option:selected").val();
@@ -258,6 +260,8 @@ function modifyMisc(item) {
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+  $("#modify-hop-button").hide();
+  $("#add-hop-button").html("Add hop");
   $("input[type=text]").val("");
   $("input[type=number]").val("");
   $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
@@ -276,6 +280,8 @@ $("#search-hops-navbar-button").on("click", function() {
 $("#addyeast-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+  $("#modify-yeast-button").hide();
+  $("#add-yeast-button").html("Add yeast");
   $("input[type=text]").val("");
   $("input[type=number]").val("");
   $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
@@ -294,6 +300,8 @@ $("#search-yeast-navbar-button").on("click", function() {
 $("#addmisc-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
+  $("#modify-misc-button").hide();
+  $("#add-misc-button").html("Add misc");
   $("input[type=text]").val("");
   $("input[type=number]").val("");
   $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
