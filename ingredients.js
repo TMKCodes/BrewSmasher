@@ -160,7 +160,7 @@ $("#modify-hop-button").on("click", function() {
 function modifyHop(item) {
   item = JSON.parse(unescape(item));
   $("#addhops-navbar-button").click();
-  $("#hops-id").val(item.id);
+  $("#hop-id").val(item.id);
   $("#hop-name").val(item.name);
   $("#hop-origin").val(item.origin);
   $("#hop-alpha").val(item.alpha);
