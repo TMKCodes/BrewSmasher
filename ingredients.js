@@ -94,9 +94,31 @@ $("#addfermentable-navbar-button").on("click", function() {
   $("#add-fermentable-content").show();
 });
 
+$("#modify-fermentable-button").on("click", function() {
+  $("#add-fermentable-request").val("modify-fermentable");
+  var data = $("#add-fermentable-form").serialize() + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#add-fermentable-content").hide();
+      $("#modify-fermentable-success").show();
+      $("#search-fermentables-content").show();
+    } else {
+    }
+  });
+});
+
 function modifyFermantable(item) {
   item = JSON.parse(unescape(item));
   $("#addfermentable-navbar-button").click();
+  $("#fermentable-id").val(item.id);
   $("#fermentable-name").val(item.name);
   $("#fermentable-supplier").val(item.supplier);
   $("#fermentable-origin").val(item.origin);
@@ -110,34 +132,35 @@ function modifyFermantable(item) {
   $("#fermentable-max-in-batch").val(item.max_in_batch);
   $("#fermentable-recommended_mash").val(item.recommended_mash);
   $("#fermentable-note").val(item.note);
-
   $("#modify-fermentable-button").show();
-  $("#modify-fermentable-button").on("click", function() {
-    $("#add-fermentable-request").val("modify-fermentable");
-    var data = $("#add-fermentable-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
-    console.log(data);
-    var request = $.ajax({
-      url : "server.php",
-      type : "POST",
-      data : data,
-      async : false
-    });
-    request.done(function(response, textStatus, jqXHR) {
-      console.log(response);
-      if(response.success == "true") {
-        $("#add-fermentable-content").hide();
-        $("#modify-fermentable-success").show();
-        $("#search-fermentables-content").show();
-      } else {
-      }
-    });
-  });
   $("#add-fermentable-button").html("Add as a new fermentable");
 }
+
+$("#modify-hop-button").on("click", function() {
+  $("#add-hop-request").val("modify-hop");
+  var data = $("#add-hop-form").serialize() + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#add-hop-content").hide();
+      $("#modify-hop-success").show();
+      $("#search-hops-content").show();
+    } else {
+    }
+  });
+});
 
 function modifyHop(item) {
   item = JSON.parse(unescape(item));
   $("#addhops-navbar-button").click();
+  $("#hops-id").val(item.id);
   $("#hop-name").val(item.name);
   $("#hop-origin").val(item.origin);
   $("#hop-alpha").val(item.alpha);
@@ -153,32 +176,35 @@ function modifyHop(item) {
   $("#hop-myrcene").val(item.myrcene);
   $("#hop-note").val(item.note);
   $("#modify-hop-button").show();
-  $("#modify-hop-button").on("click", function() {
-    $("#add-hop-request").val("modify-hop");
-    var data = $("#add-hop-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
-    console.log(data);
-    var request = $.ajax({
-      url : "server.php",
-      type : "POST",
-      data : data,
-      async : false
-    });
-    request.done(function(response, textStatus, jqXHR) {
-      console.log(response);
-      if(response.success == "true") {
-        $("#add-hop-content").hide();
-        $("#modify-hop-success").show();
-        $("#search-hops-content").show();
-      } else {
-      }
-    });
-  });
   $("#add-hop-button").html("Add as a new hop");
 }
+
+
+$("#modify-yeast-button").on("click", function() {
+  $("#add-yeast-request").val("modify-yeast");
+  var data = $("#add-yeast-form").serialize() + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#add-yeast-content").hide();
+      $("#modify-yeast-success").show();
+      $("#search-yeasts-content").show();
+    } else {
+    }
+  });
+});
 
 function modifyYeast(item) {
   item = JSON.parse(unescape(item));
   $("#addyeast-navbar-button").click();
+  $("#yeast-id").val(item.id);
   $("#yeast-name").val(item.name);
   $("#yeast-type").val(item.type);
   $("#yeast-form").val(item.form);
@@ -191,32 +217,34 @@ function modifyYeast(item) {
   $("#yeast-max-reuse").val(item.max_reuse);
   $("#yeast-note").val(item.note);
   $("#modify-yeast-button").show();
-  $("#modify-yeast-button").on("click", function() {
-    $("#add-yeast-request").val("modify-yeast");
-    var data = $("#add-yeast-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
-    console.log(data);
-    var request = $.ajax({
-      url : "server.php",
-      type : "POST",
-      data : data,
-      async : false
-    });
-    request.done(function(response, textStatus, jqXHR) {
-      console.log(response);
-      if(response.success == "true") {
-        $("#add-yeast-content").hide();
-        $("#modify-yeast-success").show();
-        $("#search-yeasts-content").show();
-      } else {
-      }
-    });
-  });
   $("#add-yeast-button").html("Add as a new yeast");
 }
+
+$("#modify-misc-button").on("click", function() {
+  $("#add-misc-request").val("modify-misc");
+  var data = $("#add-misc-form").serialize() + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      $("#add-misc-content").hide();
+      $("#modify-misc-success").show();
+      $("#search-miscs-content").show();
+    } else {
+    }
+  });
+});
 
 function modifyMisc(item) {
   item = JSON.parse(unescape(item));
   $("#addmisc-navbar-button").click();
+  $("#misc-id").val(item.id);
   $("#misc-name").val(item.name);
   $("#misc-type").val(item.type);
   $("#misc-used").val(item.used);
@@ -224,26 +252,6 @@ function modifyMisc(item) {
   $("#misc-used-note").val(item.used_note);
   $("#misc-note").val(item.note);
   $("#modify-misc-button").show();
-  $("#modify-misc-button").on("click", function() {
-    $("#add-misc-request").val("modify-misc");
-    var data = $("#add-misc-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
-    console.log(data);
-    var request = $.ajax({
-      url : "server.php",
-      type : "POST",
-      data : data,
-      async : false
-    });
-    request.done(function(response, textStatus, jqXHR) {
-      console.log(response);
-      if(response.success == "true") {
-        $("#add-misc-content").hide();
-        $("#modify-misc-success").show();
-        $("#search-miscs-content").show();
-      } else {
-      }
-    });
-  });
   $("#add-misc-button").html("Add as a new misc");
 }
 

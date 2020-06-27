@@ -63,7 +63,7 @@ class Fermentable {
 
   public function modify($data) {
     $stmt = $this->db->prepare("SELECT * FROM fermentables WHERE id = :id;");
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["fermentable-id"]);
     $res = $stmt->execute();
     if($res == null) {
       return array("success" => "false", "reason" => "Database query failed.");
@@ -107,7 +107,7 @@ class Fermentable {
     $stmt->bindValue(":recommended_mash", $data['fermentable-recommended-mash']);
     $stmt->bindValue(":note", $data['fermentable-note']);
     $stmt->bindValue(":specific_gravity", $data['fermentable-specific-gravity']);
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["fermentable-id"]);
     $res = $stmt->execute();
     if($res != false) {
       return array("success" => "true");

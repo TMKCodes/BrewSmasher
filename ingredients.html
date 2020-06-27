@@ -2,6 +2,7 @@
   <form id="add-hop-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Hops</h2>
     <p>Please check that the hop does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of hops.</p>
+    <input type="hidden" id="hop-id" name="hop-id" style="display: hidden" />
     <div class="form-group">
       <label for="hop-name">Name of hop:</label>
       <input type="text" class="form-control" id="hop-name" name="hop-name" />
@@ -138,6 +139,7 @@
   <form id="add-yeast-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Yeasts</h2>
     <p>Please check that the yeast does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of yeasts.</p>
+    <input type="hidden" id="yeast-id" name="yeast-id" style="display: hidden" />
     <div class="form-group">
       <label for="yeast-name">Name of yeast:</label>
       <input type="text" class="form-control" id="yeast-name" name="yeast-name" />
@@ -258,6 +260,7 @@
   <form id="add-misc-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Miscallenous Ingredients</h2>
     <p>Please check that the miscallenous ingredient does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of miscallenous ingredient.</p>
+    <input type="hidden" id="misc-id" name="misc-id" style="display: hidden" />
     <div class="form-group">
       <label for="misc-name">Name of misc:</label>
       <input type="text" class="form-control" id="misc-name" name="misc-name" />
@@ -349,6 +352,7 @@
   <form id="add-fermentable-form" class="centered-content recipe-block" method="POST" action="server.php">
     <h2>Fermentable</h2>
     <p>Please check that the fermentable does not exist with another name inside the system, since these are globally used by everyone. Though we do try not to allow you to add duplicate entries of fermentables.</p>
+    <input type="hidden" id="fermentable-id" name="fermentable-id" style="display: hidden" />
     <div class="form-group">
       <label for="fermentable-name">Name of fermentable:</label>
       <input type="text" class="form-control" id="fermentable-name" name="fermentable-name" />

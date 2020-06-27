@@ -46,7 +46,7 @@ class Misc {
 
   public function modify($data) {
     $stmt = $this->db->prepare("SELECT * FROM miscs WHERE id = :id;");
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["modify-id"]);
     $res = $stmt->execute();
     if($res == null) {
       return array("success" => "false", "reason" => "Database query failed.");
@@ -72,7 +72,7 @@ class Misc {
       $stmt->bindValue(":utime", $data['misc-time']);
       $stmt->bindValue(":used_note", $data['misc-used-note']);
       $stmt->bindValue(":note", $data['misc-note']);
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["misc-id"]);
     $res = $stmt->execute();
     if($res != false) {
       return array("success" => "true");

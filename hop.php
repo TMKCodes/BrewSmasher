@@ -59,7 +59,7 @@ class Hop {
 
   public function modify($data) {
     $stmt = $this->db->prepare("SELECT * FROM hops WHERE id = :id;");
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["hop-id"]);
     $res = $stmt->execute();
     if($res == null) {
       return array("success" => "false", "reason" => "Database query failed.");
@@ -101,7 +101,7 @@ class Hop {
     $stmt->bindValue(":cohumulone", $data['hop-cohumulone']);
     $stmt->bindValue(":myrcene", $data['hop-myrcene']);
     $stmt->bindValue(":note", $data['hop-note']);
-    $stmt->bindValue(":id", $data["id"]);
+    $stmt->bindValue(":id", $data["hop-id"]);
     $res = $stmt->execute();
     if($res != false) {
       return array("success" => "true");
