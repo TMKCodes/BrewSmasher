@@ -112,6 +112,11 @@ function HandleData($data, $dblocation) {
     $result = $yeast->delete($data['id']);
     unset($yeast);
     SendResult($result);
+  } else if($data['request'] == "modify-yeast") {
+    $yeast = new Yeast($dblocation);
+    $result = $yeast->modify($data);
+    unset($yeast);
+    SendResult($result);
   } else if($data['request'] == "save-recipe") {
     $recipe = new Recipe($dblocation);
     $result = $recipe->add($data['packet']);

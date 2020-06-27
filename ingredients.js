@@ -142,7 +142,7 @@ function modifyHop(item) {
   $("#hop-origin").val(item.origin);
   $("#hop-alpha").val(item.alpha);
   $("#hop-beta").val(item.beta);
-  $("#hop-use").val(item.use);
+  $("#hop-use").val(item.used);
   $("#hop-type").val(item.type);
   $("#hop-form").val(item.form);
   $("#hop-hsi").val(item.hsi);
@@ -174,6 +174,44 @@ function modifyHop(item) {
     });
   });
   $("#add-hop-button").html("Add as a new hop");
+}
+
+function modifyYeast(item) {
+  item = JSON.parse(unescape(item));
+  $("#addyeast-navbar-button").click();
+  $("#yeast-name").val(item.name);
+  $("#yeast-type").val(item.type);
+  $("#yeast-form").val(item.form);
+  $("#yeast-laboratory").val(item.laboratory);
+  $("#yeast-product-id").val(item.pid);
+  $("#yeast-min-temperature").val(item.min_temperature);
+  $("#yeast-max-temperature").val(item.max_temperature);
+  $("#yeast-flocculation").val(item.flocculation);
+  $("#yeast-attenuation").val(item.attenuation);
+  $("#yeast-max-reuse").val(item.max_reuse);
+  $("#yeast-note").val(item.note);
+  $("#modify-yeast-button").show();
+  $("#modify-yeast-button").on("click", function() {
+    $("#add-yeast-request").val("modify-yeast");
+    var data = $("#add-yeast-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
+    console.log(data);
+    var request = $.ajax({
+      url : "server.php",
+      type : "POST",
+      data : data,
+      async : false
+    });
+    request.done(function(response, textStatus, jqXHR) {
+      console.log(response);
+      if(response.success == "true") {
+        $("#add-yeast-content").hide();
+        $("#modify-yeast-success").show();
+        $("#search-yeasts-content").show();
+      } else {
+      }
+    });
+  });
+  $("#add-yeast-button").html("Add as a new yeast");
 }
 
 
@@ -519,7 +557,7 @@ function ShowYeastData(item, index) {
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"modifyYeast('" + escape(JSON.stringify(item)) + "')\">Modify</button>";
             html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
             if(item.sender == Cookies.get("user-id")) {
               html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteYeast(" + item.id + ")\">Delete</button>";

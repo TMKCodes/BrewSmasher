@@ -54,6 +54,54 @@ class Yeast {
     }
   }
 
+  public function modify($data) {
+    $stmt = $this->db->prepare("SELECT * FROM yeasts WHERE id = :id;");
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $rows = array();
+    while($row = $res->fetchArray()) {
+      array_push($rows, $row);
+    }
+    // TODO: Use $rows to save the backup of fermentable.
+    $stmt = $this->db->prepare("UPDATE yeasts " .
+                                "SET sender = :sender, " .
+                                "sender = :sender, " .
+                                "name = :name, " .
+                                "form = :form, " .
+                                "laboratory = :laboratory, " .
+                                "pid = :pid, " .
+                                "type = :type, " .
+                                "min_temperature = :min_temperature, " .
+                                "max_temperature = :max_temperature, " .
+                                "flocculation = :flocculation, " .
+                                "attenuation = :attenuation, " .
+                                "max_reuse = :max_reuse, " .
+                                "note = :note " .
+                                "WHERE id = :id;");
+    $stmt->bindValue(":sender", $data['uid']);
+    $stmt->bindValue(":name", $data['yeast-name']);
+    $stmt->bindValue(":form", $data['yeast-form']);
+    $stmt->bindValue(":laboratory", $data['yeast-laboratory']);
+    $stmt->bindValue(":pid", $data['yeast-product-id']);
+    $stmt->bindValue(":type", $data['yeast-type']);
+    $stmt->bindValue(":min_temperature", $data['yeast-min-temperature']);
+    $stmt->bindValue(":max_temperature", $data['yeast-max-temperature']);
+    $stmt->bindValue(":flocculation", $data['yeast-flocculation']);
+    $stmt->bindValue(":attenuation", $data['yeast-attenuation']);
+    $stmt->bindValue(":max_reuse", $data['yeast-max-reuse']);
+    $stmt->bindValue(":note", $data['yeast-note']);
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res != false) {
+      return array("success" => "true");
+    } else {
+      return array("success" => "false", "reason" => "For some reason update failed.");
+    }
+  }
+
   public function delete($id) {
     $stmt = $this->db->prepare("DELETE FROM yeasts WHERE id = :id");
     $stmt->bindValue(":id", $id);

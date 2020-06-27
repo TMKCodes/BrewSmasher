@@ -98,7 +98,7 @@
   <div class="alert alert-success centered-content recipe-block" role="alert" id="add-hop-success" style="display: none;">
     Adding hop was successfull, now you can find it from the system wide hop list and use it in your own recipes.
   </div>
-  <div class="alert alert-success centered-content recipe-block" role="alert" id="modify-fermentable-success" style="display: none;">
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="modify-yeast-success" style="display: none;">
     Modifying hop was successfull, now you can find it from the system wide hop list and use it in your own recipes.
   </div>
   <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-hop-success" style="display: none;">
@@ -206,13 +206,23 @@
       <label for="yeast-note">Notes for the yeast:</label>
       <input type="text" class="form-control" id="yeast-note" name="yeast-note" />
     </div>
-    <input type="hidden" name="request" value="add-yeast" />
+    <input type="hidden" name="request" id="add-yeast-request" value="add-yeast" />
+    <button type="button" class="btn btn-primary" id="modify-yeast-button" style="display: none;">Modify Yeast</button>
     <button type="submit" class="btn btn-primary" id="add-yeast-button">Add Yeast</button>
   </form>
 </div>
 <div class="container-fluid content" id="search-yeasts-content" style="display:none">
   <div class="alert alert-success centered-content recipe-block" role="alert" id="add-yeast-success" style="display: none;">
     Adding yeast was successfull, now you can find it from the system wide yeast list and use it in your own recipes.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="modify-yeast-success" style="display: none;">
+    Modifying yeast was successfull, now you can find it from the system wide yeast list and use it in your own recipes.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-yeast-success" style="display: none;">
+    Removing yeast was successfull.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-yeast-error" style="display: none;">
+    Removing yeast failed.
   </div>
   <h2 class="centered-content recipe-block">Find Yeast</h2>
   <form id="search-yeasts-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
