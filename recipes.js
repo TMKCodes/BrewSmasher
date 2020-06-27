@@ -978,6 +978,23 @@ $("#search-your-recipes-form").on("submit", function(evt) {
   });
 });
 
+function upvote(recipe) {
+  var data = "request=add-upvote&rip=" + recipe + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async: false
+  });
+  request.done(function(resp, textStatus, jqXHR) {
+    console.log(resp);
+    if(resp.success == "true") {
+      $("#search-other-recipes-form").submit();
+    }
+  });
+}
+
 $("#search-other-recipes-form").on("submit", function(evt) {
   evt.preventDefault();
   var data = $(this).serialize() + "&uid=" + Cookies.get("user-id");
@@ -993,9 +1010,25 @@ $("#search-other-recipes-form").on("submit", function(evt) {
     if(response.success == "true") {
       var html;
       response.recipes.forEach(function(item, index) {
+        var data = "request=get-upvote&rip=" + index + "&uid=" + Cookies.get("user-id");
+        console.log(data);
+        var request = $.ajax({
+          url : "server.php",
+          type : "POST",
+          data : data,
+          async: false
+        });
+        var count = 0;
+        request.done(function(resp, textStatus, jqXHR) {
+          console.log(resp);
+          if(resp.success == "true") {
+            count = resp.count;
+          }
+        });
         html += "<tr id=\"" + index + "-row\">";
         html += "<td>" + (index + 1) + "</td>";
         html += "<td>" + item.name + "</td>";
+        html += "<td><button type=\"button\" class=\"btn btn-primary mb-2\" onclick=\"upvote(" + index + ")\">" + count + " &#x25B2;</button></td>";
         html += "<td><button type=\"button\" class=\"btn btn-primary mb-2\" onclick=\"open_recipe('" + escape(JSON.stringify(item)) + "', true)\">Open</button></td>";
         html += "</tr>";
       });
@@ -1009,6 +1042,7 @@ $("#search-other-recipes-form").on("submit", function(evt) {
     }
   });
 });
+
 
 $("#add-new-recipe-navbar-button").on("click", function() {
   clear_recipe();

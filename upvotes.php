@@ -1,6 +1,6 @@
 <?php
 
-class Upvotes {
+class Upvote {
     public $db = null;
     public function __construct($location) {
       $this->db = new SQLite3($location);
@@ -8,15 +8,19 @@ class Upvotes {
     }
 
     public function add($recipe, $sender) {
-      $stmt = $this->db->prepare("INSERT INTO upvotes (rip, sender) VALUES (:rip, :sender);");
-      $stmt->bindValue(":rip", $recipes);
-      $stmt->bindValue(":sender", $sender);
-      $res = $stmt->execute();
-      if($res != false) {
-        return array("success" => "true");
-      } else {
-        return array("success" => "false", "error" => "Failed to add upvote");
+      $result = $this->checkVote($recipe, $sender);
+      if($result['voted'] == "false") {
+        $stmt = $this->db->prepare("INSERT INTO upvotes (rip, sender) VALUES (:rip, :sender);");
+        $stmt->bindValue(":rip", $recipe);
+        $stmt->bindValue(":sender", $sender);
+        $res = $stmt->execute();
+        if($res != false) {
+          return array("success" => "true");
+        } else {
+          return array("success" => "false", "error" => "Failed to add upvote");
+        }
       }
+      return array("success" => "false", "error" => "User has already voted the recipe.");
     }
 
     public function checkVote($recipe, $sender) {
@@ -24,10 +28,14 @@ class Upvotes {
       $stmt->bindValue(":recipe", $recipe);
       $stmt->bindValue(":sender", $sender);
       $res = $stmt->execute();
-      if($res == false) {
-        return array("success" => "true", "voted" => "false");
-      } else {
+      $nrows = 0;
+      while ($res->fetchArray()) {
+        $nrows++;
+      }
+      if($nrows > 0) {
         return array("success" => "true", "voted" => "true");
+      } else {
+        return array("success" => "true", "voted" => "false");
       }
     }
 
