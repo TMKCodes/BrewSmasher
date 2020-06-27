@@ -298,7 +298,8 @@
       <label for="misc-note">Notes for the misc:</label>
       <input type="text" class="form-control" id="misc-note" name="misc-note" />
     </div>
-    <input type="hidden" name="request" value="add-misc" />
+    <input type="hidden" name="request" id="add-misc-request" value="add-misc" />
+    <button type="button" class="btn btn-primary" id="modify-misc-button" style="display: none;">Modify Miscallenous</button>
     <button type="submit" class="btn btn-primary" id="add-misc-button">Add Miscallenous Ingredient</button>
   </form>
 </div>
@@ -306,7 +307,16 @@
   <div class="alert alert-success centered-content recipe-block" role="alert" id="add-misc-success" style="display: none;">
     Adding miscallenous ingredient was successfull, now you can find it from the system wide miscallenous ingredients list and use it in your own recipes.
   </div>
-  <h2 class="centered-content recipe-block">Find Yeast</h2>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="modify-yeast-success" style="display: none;">
+    Modifying miscallenous ingredient was successfull, now you can find it from the system wide misc list and use it in your own recipes.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-misc-success" style="display: none;">
+    Removing miscallenous ingredient was successfull.
+  </div>
+  <div class="alert alert-success centered-content recipe-block" role="alert" id="remove-misc-error" style="display: none;">
+    Removing miscallenous ingredient failed.
+  </div>
+  <h2 class="centered-content recipe-block">Find Miscallenous</h2>
   <form id="search-miscs-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
     <div class="form-group mb-2">
       <label for="search-miscs-type-checkbox" class="sr-only">Type:</label>

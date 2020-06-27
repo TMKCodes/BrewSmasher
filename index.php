@@ -22,6 +22,16 @@
   <title>BrewSmasher</title>
 </head>
 <body>
+  <div id="img-popover">
+    <div class="button-container">
+      <button type="button" id="img-popover-close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="" id="picture" />
+    </div>
+  </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="login-navbar">
     <a class="navbar-brand home-navbar-button">BrewSmasher</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#login-navbar-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,39 +153,29 @@
       <p class="lead">This is a place meant for Craft Brewers.</p>
       <hr class="my-4">
       <p>As a Craft Brewer you can create your recipes, keep brewing log and share your data to others. So if this is a tool for you, it is free to use.</p>
+      <p>There are ton of ingredients and you can even add them yourself if some of them are missing. Recipe creation, saving and calculations for you!  </p>
+      <img src="res/ingredients.png" class="img-thumbnail" style="width: 200px; height: 310px;" />
+      <img src="res/recipe-creation.png" class="img-thumbnail" style="width: 200px; height: 310px;"/>
+      <img src="res/hoppidy.png" class="img-thumbnail" style="width: 200px; height: 310px;"/>
     </div>
     <div class="jumbotron centered-content home-page" style="display:hidden">
-      <h1 class="display-4">Version 0.2</h1>
+      <h1 class="display-4">Version 0.3.2</h1>
       <p class="lead">First production release</p>
       <hr class="my-4">
-      <p>Hello everyone. This is the launch of production releases of Brewsmasher. The development will happen at <a href="https://beta.brewsmasher.com">beta</a> and all your data will be safe at <a href="https://brewsmasher.com">production</a></p>
-        <p>The release includes public ingredient addition, browsing and private recipe creation, browsing and modification.</p>
+      <p>Hello everyone. This is production release of Brewsmasher. The development will happen at <a href="https://beta.brewsmasher.com">beta</a> and all your data will be safe at <a href="https://brewsmasher.com">production</a></p>
+      <p>Version 0.3.2</p>
+      <ul>
+        <li>Ingredient modification.</li>
+        <li>Browsing public recipes.</li>
+        <li>Fix: recipe efficiency null.</li>
+        <li>Fix: fermentable amount 100% even if it was not.</li>
+      </ul>
+      <p>Version 0.2.0</p>
+      <ul>
+        <li>Ingredient addition/deletion.</li>
+        <li>Recipe creation, browsing and modification.</li>
+      </ul>
     </div>
-    <!--
-    <div class="jumbotron centered-content" id="crafty">
-      <h1 class="display-4">Corona</h1>
-      <hr class="my-4">
-      <p>Open letter about self destructing because of idiocy. This was supposed to become craft brewing tool,
-        but scrap that. Since Corona has made people worried about being laid off, about their healthcare, how to pay
-        bills and how to buy medicine. I know that is something to worry about, but I gotta say to you. There are other
-        ways to suffer because of Corona, other than money.
-        <br />
-        <br />
-        I can not see my own son because her mother used corona as an excuse to cancel meetings until further notice. So do you
-        think that doing crowdfunding to focus on a hobby is a bad idea? When you actually keep suffering inside 24/7.
-        Since you might not see your almost 3 year old son for even a year, you are going to miss his birthday and
-        can not give him a present. So yes worry about money. I understand it, when I am already living under US minimum
-        hourly wage and have to prioritize everything. This is why I'm not going to do a free tool for people like you while
-        suffering and isolating myself at home. Which is worse? Mental health problems, because a father yearns to see his beloved son.
-        Which can not actually be fixed with money or problems that are easily fixed by throwing cash around?
-        <br />
-        <br />
-        One thing I've learned. It's really actually better to isolate yourself from idiocy.
-        <br />
-        <br />
-        Thank you sincerely @Crafty I left because of you.
-    </div>
-  -->
   </div>
 
   <?php require_once("ingredients.html"); ?>

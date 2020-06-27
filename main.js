@@ -15,4 +15,16 @@ $(document).ready(function() {
   $(this).find("input:disabled").each(function() {
     $(this).css("background-color", "gray");
   });
+
+
+
+  $(".img-thumbnail").on("click", function() {
+    var src = $(this).attr("src");
+    $("#img-popover #picture").attr("src", src);
+    $("#img-popover").show();
+  });
+
+  $("#img-popover-close").on("click", function() {
+    $("#img-popover").hide();
+  });
 });

@@ -68,7 +68,6 @@ class Yeast {
     // TODO: Use $rows to save the backup of fermentable.
     $stmt = $this->db->prepare("UPDATE yeasts " .
                                 "SET sender = :sender, " .
-                                "sender = :sender, " .
                                 "name = :name, " .
                                 "form = :form, " .
                                 "laboratory = :laboratory, " .

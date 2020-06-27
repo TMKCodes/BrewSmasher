@@ -102,6 +102,11 @@ function HandleData($data, $dblocation) {
     $result = $hop->delete($data['id']);
     unset($hop);
     SendResult($result);
+  } else if($data['request'] == "modify-misc") {
+    $misc = new Misc($dblocation);
+    $result = $misc->modify($data);
+    unset($misc);
+    SendResult($result);
   } else if($data['request'] == "delete-misc") {
     $misc = new Misc($dblocation);
     $result = $misc->delete($data['id']);

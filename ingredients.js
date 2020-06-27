@@ -214,6 +214,38 @@ function modifyYeast(item) {
   $("#add-yeast-button").html("Add as a new yeast");
 }
 
+function modifyMisc(item) {
+  item = JSON.parse(unescape(item));
+  $("#addmisc-navbar-button").click();
+  $("#misc-name").val(item.name);
+  $("#misc-type").val(item.type);
+  $("#misc-used").val(item.used);
+  $("#misc-time").val(item.utime);
+  $("#misc-used-note").val(item.used_note);
+  $("#misc-note").val(item.note);
+  $("#modify-misc-button").show();
+  $("#modify-misc-button").on("click", function() {
+    $("#add-misc-request").val("modify-misc");
+    var data = $("#add-misc-form").serialize() + "&uid=" + Cookies.get("user-id") + "&id=" + item.id;
+    console.log(data);
+    var request = $.ajax({
+      url : "server.php",
+      type : "POST",
+      data : data,
+      async : false
+    });
+    request.done(function(response, textStatus, jqXHR) {
+      console.log(response);
+      if(response.success == "true") {
+        $("#add-misc-content").hide();
+        $("#modify-misc-success").show();
+        $("#search-miscs-content").show();
+      } else {
+      }
+    });
+  });
+  $("#add-misc-button").html("Add as a new misc");
+}
 
 $("#addhops-navbar-button").on("click", function() {
   $(".content").hide();
@@ -644,16 +676,16 @@ function ShowMiscData(item, index) {
           if(item.utime != "") {
             html += "<tr><td>Time:</td><td>" + item.utime + " </td></tr>";
           }
-          if(item.use_note != "") {
+          if(item.used_note != "") {
             html += "<tr><td colspan=\"2\">Use description:</td></tr>";
-            html += "<tr><td colspan=\"2\">" + item.use_note + "</td></tr>";
+            html += "<tr><td colspan=\"2\">" + item.used_note + "</td></tr>";
           }
           if(item.note != "") {
             html += "<tr><td colspan=\"2\">Note:</td></tr>";
             html += "<tr><td colspan=\"2\">" + item.note + "</td></tr>";
           }
           html += "<tr><td colspan=\"2\">";
-            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"alert('Not yet implemented')\">Modify</button>";
+            html += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"modifyMisc('" + escape(JSON.stringify(item)) + "')\">Modify</button>";
             html += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"alert('Not yet implemented')\">Report</button>";
             if(item.sender == Cookies.get("user-id")) {
               html += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteMisc(" + item.id + ")\">Delete</button>";

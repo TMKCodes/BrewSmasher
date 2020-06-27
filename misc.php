@@ -44,6 +44,43 @@ class Misc {
     }
   }
 
+  public function modify($data) {
+    $stmt = $this->db->prepare("SELECT * FROM miscs WHERE id = :id;");
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $rows = array();
+    while($row = $res->fetchArray()) {
+      array_push($rows, $row);
+    }
+    // TODO: Use $rows to save the backup of fermentable.
+    $stmt = $this->db->prepare("UPDATE miscs " .
+                                "SET sender = :sender, " .
+                                "name = :name, " .
+                                "type = :type, " .
+                                "used = :used, " .
+                                "utime = :utime, " .
+                                "used_note = :used_note, " .
+                                "note = :note " .
+                                "WHERE id = :id;");
+      $stmt->bindValue(":sender", $data['uid']);
+      $stmt->bindValue(":name", $data['misc-name']);
+      $stmt->bindValue(":type", $data['misc-type']);
+      $stmt->bindValue(":used", $data['misc-used']);
+      $stmt->bindValue(":utime", $data['misc-time']);
+      $stmt->bindValue(":used_note", $data['misc-used-note']);
+      $stmt->bindValue(":note", $data['misc-note']);
+    $stmt->bindValue(":id", $data["id"]);
+    $res = $stmt->execute();
+    if($res != false) {
+      return array("success" => "true");
+    } else {
+      return array("success" => "false", "reason" => "For some reason update failed.");
+    }
+  }
+
   public function delete($id) {
     $stmt = $this->db->prepare("DELETE FROM miscs WHERE id = :id");
     $stmt->bindValue(":id", $id);
