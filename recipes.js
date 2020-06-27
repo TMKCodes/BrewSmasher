@@ -733,6 +733,13 @@ $("#browse-your-recipes-navbar-button").on("click", function() {
   $("#browse-your-recipes").show();
 });
 
+$("#browse-other-recipes-navbar-button").on("click", function() {
+  $(".content").hide();
+  $(".alert").hide();
+  $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
+  $("#browse-other-recipes").show();
+});
+
 function clear_recipe() {
   $("#modify-recipe-button").hide();
   $("#add-recipe-failed-no-type").hide();
@@ -776,7 +783,7 @@ function delete_recipe(item) {
   });
 }
 
-function open_recipe(item) {
+function open_recipe(item, public) {
   citem = item;
   item = JSON.parse(unescape(item));
   $("#remove-recipe-success").hide();
@@ -918,11 +925,13 @@ function open_recipe(item) {
     $(".recipe-yeast-amount-type:last").val(item.yeasts[x].amount_type);
     $(".recipe-yeast-starter-required:last").val(item.yeasts[x].starter_required);
   }
-  $("#modify-recipe-button").show();
-  $("#modify-recipe-button").on("click", function() {
-    delete_recipe(citem);
-    $("#save-recipe-button").click();
-  });
+  if(public != true) {
+      $("#modify-recipe-button").show();
+    $("#modify-recipe-button").on("click", function() {
+      delete_recipe(citem);
+      $("#save-recipe-button").click();
+    });
+  }
   $("#save-recipe-button").html("Save as new recipe");
   $(".recipe-fermentable-kg").change();
   CalculateOG();
@@ -954,7 +963,7 @@ $("#search-your-recipes-form").on("submit", function(evt) {
         html += "<tr id=\"" + index + "-row\">";
         html += "<td>" + (index + 1) + "</td>";
         html += "<td>" + item.name + "</td>";
-        html += "<td><button type=\"button\" class=\"btn btn-primary mb-2\" onclick=\"open_recipe('" + escape(JSON.stringify(item)) + "')\">Open</button></td>";
+        html += "<td><button type=\"button\" class=\"btn btn-primary mb-2\" onclick=\"open_recipe('" + escape(JSON.stringify(item)) + "', false)\">Open</button></td>";
         html += "<td><button type=\"button\" class=\"btn btn-warning mb-2\" onclick=\"delete_recipe('" + escape(JSON.stringify(item)) + "')\">Delete</button></td>";
         html += "</tr>";
       });
@@ -965,6 +974,38 @@ $("#search-your-recipes-form").on("submit", function(evt) {
       $("#search-your-recipes-table-body").html("");
       $(".alert").hide();
       $("#search-your-recipes-table").show();
+    }
+  });
+});
+
+$("#search-other-recipes-form").on("submit", function(evt) {
+  evt.preventDefault();
+  var data = $(this).serialize() + "&uid=" + Cookies.get("user-id");
+  console.log(data);
+  var request = $.ajax({
+    url : "server.php",
+    type : "POST",
+    data : data,
+    async : false
+  });
+  request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
+    if(response.success == "true") {
+      var html;
+      response.recipes.forEach(function(item, index) {
+        html += "<tr id=\"" + index + "-row\">";
+        html += "<td>" + (index + 1) + "</td>";
+        html += "<td>" + item.name + "</td>";
+        html += "<td><button type=\"button\" class=\"btn btn-primary mb-2\" onclick=\"open_recipe('" + escape(JSON.stringify(item)) + "', true)\">Open</button></td>";
+        html += "</tr>";
+      });
+      $("#search-other-recipes-table-body").html(html);
+      $(".alert").hide();
+      $("#search-other-recipes-table").show();
+    } else {
+      $("#search-other-recipes-table-body").html("");
+      $(".alert").hide();
+      $("#search-other-recipes-table").show();
     }
   });
 });

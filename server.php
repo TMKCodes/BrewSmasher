@@ -132,6 +132,11 @@ function HandleData($data, $dblocation) {
     $result = $recipe->getPrivateList($data['search-your-recipes-type-checkbox'], $data['uid'], $data['search-your-recipes-input']);
     unset($recipe);
     SendResult($result);
+  } else if($data['request'] == "search-other-recipes") {
+    $recipe = new Recipe($dblocation);
+    $result = $recipe->getPublicList($data['search-other-recipes-type-checkbox'], $data['uid'], $data['search-other-recipes-input']);
+    unset($recipe);
+    SendResult($result);
   } else if($data['request'] == "delete-recipe") {
     $recipe = new Recipe($dblocation);
     $result = $recipe->remove($data['id']);

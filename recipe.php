@@ -235,6 +235,57 @@ class Recipe {
     }
     return array("success" => "true", "recipes" => $rows);
   }
+
+  public function getPublicList($type, $sender, $keyword) {
+    if($sender == "" && $keyword == "") {
+      return $this->getListByType($type);
+    }
+    $stmt = $this->db->prepare("SELECT * FROM recipes WHERE type = :type AND share = 'Public' AND name LIKE :name;");
+    $stmt->bindValue(":type", $type);
+    $stmt->bindValue(":name", "%" . $keyword . "%");
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $rows = array();
+    while($row = $res->fetchArray()) {
+      // query rest of the data.
+      $subStmt = $this->db->prepare("SELECT * FROM recipe_fermentables WHERE rip = :rip;");
+      $subStmt->bindValue(":rip", $row['id']);
+      $subRes = $subStmt->execute();
+      $fermentables = array();
+      while($fermentable = $subRes->fetchArray()) {
+        array_push($fermentables, $fermentable);
+      }
+      $row['fermentables'] = $fermentables;
+      $subStmt = $this->db->prepare("SELECT * FROM recipe_hops WHERE rip = :rip;");
+      $subStmt->bindValue(":rip", $row['id']);
+      $subRes = $subStmt->execute();
+      $hops = array();
+      while($hop = $subRes->fetchArray()) {
+        array_push($hops, $hop);
+      }
+      $row['hops'] = $hops;
+      $subStmt = $this->db->prepare("SELECT * FROM recipe_miscs WHERE rip = :rip;");
+      $subStmt->bindValue(":rip", $row['id']);
+      $subRes = $subStmt->execute();
+      $miscs = array();
+      while($misc = $subRes->fetchArray()) {
+        array_push($miscs, $misc);
+      }
+      $row['miscs'] = $miscs;
+      $subStmt = $this->db->prepare("SELECT * FROM recipe_yeasts WHERE rip = :rip;");
+      $subStmt->bindValue(":rip", $row['id']);
+      $subRes = $subStmt->execute();
+      $yeasts = array();
+      while($yeast = $subRes->fetchArray()) {
+        array_push($yeasts, $yeast);
+      }
+      $row['yeasts'] = $yeasts;
+      array_push($rows, $row);
+    }
+    return array("success" => "true", "recipes" => $rows);
+  }
 }
 
 ?>

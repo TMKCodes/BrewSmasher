@@ -42,6 +42,40 @@
     </tbody>
   </table>
 </div>
+<div class="container-fluid content centered-content" id="browse-other-recipes" style="display: none;">
+  <h2 class="centered-content recipe-block">Find Public Recipe</h2>
+  <form id="search-other-recipes-form" class="form-inline centered-content tablet-wider recipe-block" method="POST" action="server.php">
+    <div class="form-group mb-2">
+      <label for="search-other-recipes-type-checkbox" class="sr-only">Type:</label>
+      <select class="form-control" id="search-other-recipes-type-checkbox" name="search-other-recipes-type-checkbox">
+        <option>All Grain Beer</option>
+        <option>Extract Beer</option>
+        <option>Partial mash Beer</option>
+        <option>Cider</option>
+        <option>Graff</option>
+        <option>Mead</option>
+        <option>Braggot</option>
+        <option>Wine</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="search-other-recipes-input" class="sr-only">Keyword</label>
+      <input type="text" class="form-control" id="search-other-recipes-input" placeholder="Keyword" name="search-other-recipes-input" />
+    </div>
+    <input type="hidden" name="request" value="search-other-recipes" />
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table centered-content recipe-block" id="search-other-recipes-table" style="display: none;">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Open</th>
+    </thead>
+    <tbody id="search-other-recipes-table-body">
+    </tbody>
+  </table>
+</div>
 <div class="container-fluid content centered-content" id="add-recipe" style="display: none;">
   <div class="recipe-block">
     <h5>Recipe stats</h5>
