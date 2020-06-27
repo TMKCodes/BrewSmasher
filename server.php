@@ -10,6 +10,7 @@ require_once("hop.php");
 require_once("yeast.php");
 require_once("misc.php");
 require_once("recipe.php");
+require_once("upvotes.php");
 
 header('Content-type: application/json');
 
@@ -141,6 +142,26 @@ function HandleData($data, $dblocation) {
     $recipe = new Recipe($dblocation);
     $result = $recipe->remove($data['id']);
     unset($recipe);
+    SendResult($result);
+  } else if($data['request'] == "add-upvote") {
+    $upvote = new Upvote($dblocation);
+    $result = $upvote->add($data['rip'], $data['uid']);
+    unset($upvote);
+    SendResult($result);
+  } else if($data['request'] == "check-upvote") {
+    $upvote = new Upvote($dblocation);
+    $result = $upvote->checkVote($data['rip'], $data['uid']);
+    unset($upvote);
+    SendResult($result);
+  } else if($data['request'] == "get-upvote") {
+    $upvote = new Upvote($dblocation);
+    $result = $upvote->getVotes($data['rip']);
+    unset($upvote);
+    SendResult($result);
+  } else if($data['request'] == "delete-upvote") {
+    $upvote = new Upvote($dblocation);
+    $result = $upvote->remove($data['rip'], $data['uid']);
+    unset($upvote);
     SendResult($result);
   } else if($data['request'] == "get-every-ingredient") {
     $fermentable = new Fermentable($dblocation);
