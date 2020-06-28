@@ -548,6 +548,128 @@ $("#search-hops-form").on("submit", function(evt) {
     console.log(response);
     if(response.success == "true" && response.hops.length > 0) {
       var html;
+      console.log(response);
+      if($("#search-hops-sort-checkbox").val() == "Alpha &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.alpha < b.alpha) {
+            return -1;
+          }
+          if (a.alpha > b.alpha) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Alpha &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.alpha > b.alpha) {
+            return -1;
+          }
+          if (a.alpha < b.alpha) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.beta < b.beta) {
+            return -1;
+          }
+          if (a.beta > b.beta) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.beta > b.beta) {
+            return -1;
+          }
+          if (a.beta < b.beta) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.humulene < b.humulene) {
+            return -1;
+          }
+          if (a.humulene > b.humulene) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.humulene > b.humulene) {
+            return -1;
+          }
+          if (a.humulene < b.humulene) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.caryophyllene < b.caryophyllene) {
+            return -1;
+          }
+          if (a.caryophyllene > b.caryophyllene) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.caryophyllene > b.caryophyllene) {
+            return -1;
+          }
+          if (a.caryophyllene < b.caryophyllene) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.cohumulone < b.cohumulone) {
+            return -1;
+          }
+          if (a.cohumulone > b.cohumulone) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.cohumulone > b.cohumulone) {
+            return -1;
+          }
+          if (a.cohumulone < b.cohumulone) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25B2;") {
+        response.hops.sort(function(a, b) {
+          if (a.myrcene < b.myrcene) {
+            return -1;
+          }
+          if (a.myrcene > b.myrcene) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25BC;") {
+        response.hops.sort(function(a, b) {
+          if (a.myrcene > b.myrcene) {
+            return -1;
+          }
+          if (a.myrcene < b.myrcene) {
+            return 1;
+          }
+          return 0;
+        });
+      }
       response.hops.forEach(function(item, index) {
         html += "<tr id=\"" + index + "-row\" onclick=\"ShowHopData('" + escape(JSON.stringify(item)) + "', " + index + ")\">";
         html += "<td>" + (index + 1) + "</td>";
