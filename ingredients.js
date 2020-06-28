@@ -551,120 +551,121 @@ $("#search-hops-form").on("submit", function(evt) {
       console.log(response);
       if($("#search-hops-sort-checkbox").val() == "Alpha &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.alpha < b.alpha) {
+          console.log(parseFloat(a.alpha) + "<" + parseFloat(b.alpha))
+          if (parseFloat(a.alpha) < parseFloat(b.alpha)) {
             return -1;
           }
-          if (a.alpha > b.alpha) {
+          if (parseFloat(a.alpha) > parseFloat(b.alpha)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Alpha &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.alpha > b.alpha) {
+          if (parseFloat(a.alpha) > parseFloat(b.alpha)) {
             return -1;
           }
-          if (a.alpha < b.alpha) {
+          if (parseFloat(a.alpha) < parseFloat(b.alpha)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.beta < b.beta) {
+          if (parseFloat(a.beta) < parseFloat(b.beta)) {
             return -1;
           }
-          if (a.beta > b.beta) {
+          if (parseFloat(a.beta) > parseFloat(b.beta)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.beta > b.beta) {
+          if (parseFloat(a.beta) > parseFloat(b.beta)) {
             return -1;
           }
-          if (a.beta < b.beta) {
+          if (parseFloat(a.beta) < parseFloat(b.beta)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.humulene < b.humulene) {
+          if (parseFloat(a.humulene) < parseFloat(b.humulene)) {
             return -1;
           }
-          if (a.humulene > b.humulene) {
+          if (parseFloat(a.humulene) > parseFloat(b.humulene)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.humulene > b.humulene) {
+          if (parseFloat(a.humulene) > parseFloat(b.humulene)) {
             return -1;
           }
-          if (a.humulene < b.humulene) {
+          if (parseFloat(a.humulene) < parseFloat(b.humulene)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.caryophyllene < b.caryophyllene) {
+          if (parseFloat(a.caryophyllene) < parseFloat(b.caryophyllene)) {
             return -1;
           }
-          if (a.caryophyllene > b.caryophyllene) {
+          if (parseFloat(a.caryophyllene) > parseFloat(b.caryophyllene)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.caryophyllene > b.caryophyllene) {
+          if (parseFloat(a.caryophyllene) > parseFloat(b.caryophyllene)) {
             return -1;
           }
-          if (a.caryophyllene < b.caryophyllene) {
+          if (parseFloat(a.caryophyllene) < parseFloat(b.caryophyllene)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.cohumulone < b.cohumulone) {
+          if (parseFloat(a.cohumulone) < parseFloat(b.cohumulone)) {
             return -1;
           }
-          if (a.cohumulone > b.cohumulone) {
+          if (parseFloat(a.cohumulone) > parseFloat(b.cohumulone)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.cohumulone > b.cohumulone) {
+          if (parseFloat(a.cohumulone) > parseFloat(b.cohumulone)) {
             return -1;
           }
-          if (a.cohumulone < b.cohumulone) {
+          if (parseFloat(a.cohumulone) < parseFloat(b.cohumulone)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25B2;") {
         response.hops.sort(function(a, b) {
-          if (a.myrcene < b.myrcene) {
+          if (parseFloat(a.myrcene) < parseFloat(b.myrcene)) {
             return -1;
           }
-          if (a.myrcene > b.myrcene) {
+          if (parseFloat(a.myrcene) > parseFloat(b.myrcene)) {
             return 1;
           }
           return 0;
         });
       } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25BC;") {
         response.hops.sort(function(a, b) {
-          if (a.myrcene > b.myrcene) {
+          if (parseFloat(a.myrcene) > parseFloat(b.myrcene)) {
             return -1;
           }
-          if (a.myrcene < b.myrcene) {
+          if (parseFloat(a.myrcene) < parseFloat(b.myrcene)) {
             return 1;
           }
           return 0;
