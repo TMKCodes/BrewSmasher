@@ -163,6 +163,21 @@ function HandleData($data, $dblocation) {
     $result = $upvote->remove($data['rip'], $data['uid']);
     unset($upvote);
     SendResult($result);
+  } else if($data['request'] == "add-storage") {
+    $storage = new Storage($dblocation);
+    $result = $storage->add($data['uid'], $data['item'], $data['type'], $data['amount']);
+    unset($storage);
+    SendResult($result);
+  } else if($data['request'] == "get-storage") {
+    $storage = new Storage($dblocation);
+    $result = $storage->get($data['uid']);
+    unset($storage);
+    SendResult($result);
+  } else if($data['request'] == "delete-storage") {
+    $storage = new Storage($dblocation);
+    $result = $storage->delete($data['id'], $data['uid']);
+    unset($storage);
+    SendResult($result);
   } else if($data['request'] == "get-every-ingredient") {
     $fermentable = new Fermentable($dblocation);
     $Malt = $fermentable->getListByKeyword("Malt", "");
