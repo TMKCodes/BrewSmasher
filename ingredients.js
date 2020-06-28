@@ -549,7 +549,7 @@ $("#search-hops-form").on("submit", function(evt) {
     if(response.success == "true" && response.hops.length > 0) {
       var html;
       console.log(response);
-      if($("#search-hops-sort-checkbox").val() == "Alpha &#x25B2;") {
+      if($("#search-hops-sort-checkbox").val() == "Alpha Up") {
         response.hops.sort(function(a, b) {
           console.log(parseFloat(a.alpha) + "<" + parseFloat(b.alpha))
           if (parseFloat(a.alpha) < parseFloat(b.alpha)) {
@@ -560,7 +560,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Alpha &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Alpha Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.alpha) > parseFloat(b.alpha)) {
             return -1;
@@ -570,7 +570,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25B2;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Beta Up") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.beta) < parseFloat(b.beta)) {
             return -1;
@@ -580,7 +580,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Beta &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Beta Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.beta) > parseFloat(b.beta)) {
             return -1;
@@ -590,7 +590,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25B2;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Humulene Up") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.humulene) < parseFloat(b.humulene)) {
             return -1;
@@ -600,7 +600,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Humulene &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Humulene Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.humulene) > parseFloat(b.humulene)) {
             return -1;
@@ -610,7 +610,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25B2;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene Up") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.caryophyllene) < parseFloat(b.caryophyllene)) {
             return -1;
@@ -620,7 +620,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Caryophyllene Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.caryophyllene) > parseFloat(b.caryophyllene)) {
             return -1;
@@ -630,7 +630,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25B2;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone Up") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.cohumulone) < parseFloat(b.cohumulone)) {
             return -1;
@@ -640,7 +640,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Cohumulone Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.cohumulone) > parseFloat(b.cohumulone)) {
             return -1;
@@ -650,7 +650,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25B2;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Myrcene Up") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.myrcene) < parseFloat(b.myrcene)) {
             return -1;
@@ -660,7 +660,7 @@ $("#search-hops-form").on("submit", function(evt) {
           }
           return 0;
         });
-      } else if($("#search-hops-sort-checkbox").val() == "Myrcene &#x25BC;") {
+      } else if($("#search-hops-sort-checkbox").val() == "Myrcene Down") {
         response.hops.sort(function(a, b) {
           if (parseFloat(a.myrcene) > parseFloat(b.myrcene)) {
             return -1;
