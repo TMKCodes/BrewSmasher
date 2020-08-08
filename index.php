@@ -115,7 +115,7 @@
             Community
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" id="discord" href="https://discord.gg/hzNV74Z">Discord Server</a>
+            <a class="dropdown-item" id="discord" href="https://discord.gg/uStv4X4">Discord Server</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="code" href="https://github.com/TMKCodes/BrewSmasher">Code</a>
             <a class="dropdown-item" id="project" href="https://github.com/TMKCodes/BrewSmasher/projects/1">Project</a>
