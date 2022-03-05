@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $('[data-toggle="tooltip"]').tooltip();
-  get_tip_jar_monthly_balance();
   if(window.innerWidth >= 768) {
     $(".tablet-wider").css("width", "435px");
     $(".centered-content").css("width", "640px");

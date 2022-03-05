@@ -1,23 +1,7 @@
-function get_tip_jar_monthly_balance() {
-  var request = $.ajax({
-    url : "https://blockchain.info/de/q/addressbalance/32cstyDJLnYwdxRSE7oPWGz8rKLTJiA2aR",
-    type : "GET"
-  });
-  request.done(function(response, textStatus, jqXHR) {
-    console.log(response);
-    var lastWithdrawDate = new Date("03/18/2020");
-    var currentDate = new Date();
-    var diff = currentDate.getTime() - lastWithdrawDate.getTime();
-    var daydiff = diff / (1000 * 3600 * 24);
-    balance = parseFloat(response) / daydiff;
-    $("#tip-jar-btc").html(balance * 30);
-  });
-}
 
 $(".home-navbar-button").on("click", function() {
   $(".content").hide();
   $(".alert").hide();
-  get_tip_jar_monthly_balance();
   $("#home-content").show();
   $(".recipe-block").css("background-color", $(".jumbotron").css("background-color"));
   $(".nav-link").removeClass("active");

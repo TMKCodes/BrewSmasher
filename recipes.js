@@ -594,6 +594,7 @@ function addToRecipe(type, item) {
   }
   CalculateOG();
 }
+
 $("#recipe-scale-range").on("input", function() {
   $("#scale-amount").html($("#recipe-scale-range").val());
 });

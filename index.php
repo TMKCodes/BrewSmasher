@@ -11,6 +11,8 @@
 
     gtag('config', 'UA-160990370-1');
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2582273507218133"
+     crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css" />
@@ -96,12 +98,9 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="add-new-water-navbar-button" style="display: none;">Add new water profile</a>
             <a class="dropdown-item" id="browse-your-waters-navbar-button" style="display: none;">Browse your water profile</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="add-new-brewprocess-navbar-button" style="display: none;">Add new brew process</a>
-            <a class="dropdown-item" id="browse-your-brewprocesss-navbar-button" style="display: none;">Browse your brew processes</a>
           </div>
         </li>
-        <li class="nav-item dropdown"  style="display: none;">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Brewing
           </a>
@@ -155,27 +154,14 @@
       <img src="res/hoppidy.png" class="img-thumbnail" style="width: 200px; height: 310px;"/>
     </div>
     <div class="jumbotron centered-content home-page" style="display:hidden">
-      <h1 class="display-4">Version 0.3.2</h1>
-      <p class="lead">First production release</p>
-      <hr class="my-4">
-      <p>Hello everyone. This is production release of Brewsmasher. The development will happen at <a href="https://beta.brewsmasher.com">beta</a> and all your data will be safe at <a href="https://brewsmasher.com">production</a></p>
-      <p>Version 0.3.2</p>
-      <ul>
-        <li>Ingredient modification.</li>
-        <li>Browsing public recipes.</li>
-        <li>Fix: recipe efficiency null.</li>
-        <li>Fix: fermentable amount 100% even if it was not.</li>
-      </ul>
-      <p>Version 0.2.0</p>
-      <ul>
-        <li>Ingredient addition/deletion.</li>
-        <li>Recipe creation, browsing and modification.</li>
-      </ul>
+      <h1 class="display-4">© 2021 - Xorfork Solutions</h1>
+      <p class="lead">Really done for us, but we realized we can give this free for you to use too. So be happy and brew at home!</p>
     </div>
   </div>
 
   <?php require_once("ingredients.html"); ?>
   <?php require_once("recipes.html"); ?>
+  <?php require_once("brewing.html"); ?>
 
   <div class="container-fluid content" Id="login-content" style="display: none;">
     <form id="login-form" class="centered-content" method="POST" action="server.php">
@@ -243,6 +229,7 @@
   <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
   <script src="ingredients.js"></script>
   <script src="recipes.js"></script>
+  <script src="brewing.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
