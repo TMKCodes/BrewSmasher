@@ -19,7 +19,7 @@
   -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
   <link rel="stylesheet" href="style.css" />
-  <title>BrewSmasher</title>
+  <title>Brewsmashing</title>
 </head>
 <body>
   <div id="img-popover">
@@ -33,7 +33,7 @@
     </div>
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="login-navbar">
-    <a class="navbar-brand home-navbar-button">BrewSmasher</a>
+    <a class="navbar-brand home-navbar-button">Brewsmashing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#login-navbar-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,7 +49,7 @@
     </div>
   </nav>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="logged-navbar"  style="display: none;">
-    <a class="navbar-brand home-navbar-button">BrewSmasher</a>
+    <a class="navbar-brand home-navbar-button">Brewsmashing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logged-navbar-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -115,12 +115,8 @@
             Community
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" id="discord" href="https://discord.gg/uStv4X4">Discord Server</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="code" href="https://github.com/TMKCodes/BrewSmasher">Code</a>
             <a class="dropdown-item" id="project" href="https://github.com/TMKCodes/BrewSmasher/projects/1">Project</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="patreon" href="https://www.patreon.com/user?u=32673977&fan_landing=true">Patreon</a>
           </div>
         </li>
         <li class="nav-item dropdown"  style="display: none;">
