@@ -1008,7 +1008,7 @@ $("#login-form").on("submit", function(evt) {
       $("#failed-to-login-error").show();
     }
   });
-  requrest.error(function(jqXHR, textStatus, erroThrown) {
+  request.error(function(jqXHR, textStatus, erroThrown) {
     console.log()
   });
 });
