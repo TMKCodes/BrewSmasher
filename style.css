@@ -134,7 +134,11 @@ td > table {
   width: 100%; /* Width of the outside container */
 }
 
-.nav-link {
+#register-navbar-button {
+  cursor: pointer;
+}
+
+#login-navbar-button {
   cursor: pointer;
 }
 
