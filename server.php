@@ -53,6 +53,11 @@ function HandleData($data, $dblocation) {
     $result = $fermentable->getListByKeyword($data['search-fermentables-type-checkbox'], $data['search-fermentables-search-input']);
     unset($fermentable);
     SendResult($result);
+  } else if($data['request'] == "get-fermentable") {
+    $fermentable = new Fermentable($dblocation);
+    $result = $fermentable->getById($data['search-fermentables-id']);
+    unset($fermentable);
+    SendResult($result);
   } else if($data['request'] == "add-hop") {
     $hop = new Hop($dblocation);
     $result = $hop->add($data);

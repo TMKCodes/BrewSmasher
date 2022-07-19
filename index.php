@@ -2,6 +2,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2582273507218133"
+      crossorigin="anonymous"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160990370-1"></script>
   <script>
@@ -11,8 +13,6 @@
 
     gtag('config', 'UA-160990370-1');
   </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2582273507218133"
-     crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css" />
@@ -75,6 +75,7 @@
             <a class="dropdown-item" id="search-misc-navbar-button">Browse Others</a>
           </div>
         </li>
+        <!--
         <li class="nav-item dropdown" style="display: none;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Storage
@@ -87,6 +88,7 @@
               <a class="dropdown-item" id="browse-equipments-in-storage-navbar-button">Browse your equipment</a>
           </div>
         </li>
+        -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Planning
@@ -95,9 +97,11 @@
             <a class="dropdown-item" id="add-new-recipe-navbar-button">Add new recipe</a>
             <a class="dropdown-item" id="browse-your-recipes-navbar-button">Browse your recipes</a>
             <a class="dropdown-item" id="browse-other-recipes-navbar-button">Browse public recipes</a>
+            <!--
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="add-new-water-navbar-button" style="display: none;">Add new water profile</a>
             <a class="dropdown-item" id="browse-your-waters-navbar-button" style="display: none;">Browse your water profile</a>
+            -->
           </div>
         </li>
         <li class="nav-item dropdown">

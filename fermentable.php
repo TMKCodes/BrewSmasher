@@ -126,6 +126,20 @@ class Fermentable {
     return array("success" => "true");
   }
 
+  public function getById($id) {
+    $stmt = $this->db->prepare("SELECT * FROM fermentables WHERE id = :id;");
+    $stmt->bindValue(":id", $id);
+    $res = $stmt->execute();
+    if($res == null) {
+      return array("success" => "false", "reason" => "Database query failed.");
+    }
+    $rows = array();
+    while($row = $res->fetchArray()) {
+      array_push($rows, $row);
+    }
+    return array("success" => "true", "fermentables" => $rows);
+  }
+
   public function getListByType($type) {
     $stmt = $this->db->prepare("SELECT * FROM fermentables WHERE type = :type;");
     $stmt->bindValue(":type", $type);
