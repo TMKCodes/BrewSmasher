@@ -50,7 +50,7 @@ td > button {
   margin-right: 8px;
 }
 
-!td > button {
+td > button {
   padding: 5px;
 }
 
@@ -132,6 +132,10 @@ td > table {
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+}
+
+.nav-link {
+  cursor: pointer;
 }
 
 /* The slider itself */
