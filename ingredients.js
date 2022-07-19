@@ -997,6 +997,7 @@ $("#login-form").on("submit", function(evt) {
     data : $(this).serialize()
   });
   request.done(function(response, textStatus, jqXHR) {
+    console.log(response);
     if(response.success == "true") {
       $("#login-content").hide();
       $("#login-navbar").hide();
