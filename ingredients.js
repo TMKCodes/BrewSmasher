@@ -995,7 +995,7 @@ $("#login-form").on("submit", function(evt) {
     url : "server.php",
     type : "POST",
     data : $(this).serialize()
-  }).always(function(jqXHR, textStatus, erroThrown) {
+  }).always(function(jqXHR, textStatus, errorThrown) {
     console.log(errorThrown);
     console.log(textStatus);
   }).done(function(response, textStatus, jqXHR) {
