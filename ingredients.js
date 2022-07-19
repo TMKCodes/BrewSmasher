@@ -995,8 +995,9 @@ $("#login-form").on("submit", function(evt) {
     url : "server.php",
     type : "POST",
     data : $(this).serialize()
-  });
-  request.done(function(response, textStatus, jqXHR) {
+  }).always(function(jqXHR, textStatus, erroThrown) {
+    console.log()
+  }).done(function(response, textStatus, jqXHR) {
     console.log(response);
     if(response.success == "true") {
       $("#login-content").hide();
@@ -1007,9 +1008,6 @@ $("#login-form").on("submit", function(evt) {
     } else {
       $("#failed-to-login-error").show();
     }
-  });
-  request.error(function(jqXHR, textStatus, erroThrown) {
-    console.log()
   });
 });
 
