@@ -996,7 +996,8 @@ $("#login-form").on("submit", function(evt) {
     type : "POST",
     data : $(this).serialize()
   }).always(function(jqXHR, textStatus, erroThrown) {
-    console.log()
+    console.log(errorThrown);
+    console.log(textStatus);
   }).done(function(response, textStatus, jqXHR) {
     console.log(response);
     if(response.success == "true") {
