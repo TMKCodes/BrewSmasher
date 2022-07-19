@@ -987,7 +987,7 @@ $("#login-form").on("submit", function(evt) {
     $("#empty-email-error").show();
     return;
   }
-  if($("#passwordC").val() == '') {
+  if($("#password").val() == '') {
     $("#empty-password-error").show();
     return;
   }
