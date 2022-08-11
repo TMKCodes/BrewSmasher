@@ -1,11 +1,24 @@
 $(document).ready(function() {
   $('[data-toggle="tooltip"]').tooltip();
+  if(window.innerWidth >= 1024) {
+    $(".centered-content").css("width", "768px");
+  }
   if(window.innerWidth >= 768) {
     $(".tablet-wider").css("width", "435px");
     $(".centered-content").css("width", "640px");
   }
-  if(window.innerWidth >= 1024) {
-    $(".centered-content").css("width", "768px");
+  if(window.innerWidth <= 425 && window.innerWidth > 375) {
+    $(".centered-content").css("padding-left", "1px");
+    $(".centered-content").css("padding-right", "1px");
+    $(".centered-content").css("width", "361px");
+  } else if(window.innerWidth <= 375 && window.innerWidth > 320) {
+    $(".centered-content").css("padding-left", "1px");
+    $(".centered-content").css("padding-right", "1px");
+    $(".centered-content").css("width", "321px");
+  }else if(window.innerWidth <= 320) {
+    $(".centered-content").css("padding-left", "1px");
+    $(".centered-content").css("padding-right", "1px");
+    $(".centered-content").css("width", "266px");
   }
   if(Cookies.get("session-hash") != undefined) {
     $("#login-navbar").hide();

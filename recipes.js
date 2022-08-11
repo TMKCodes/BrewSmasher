@@ -1057,19 +1057,6 @@ $("#add-new-recipe-navbar-button").on("click", function() {
   if(window.innerWidth >= 1024) {
     $(".centered-content").css("width", "768px");
   }
-  if(window.innerWidth <= 425 && window.innerWidth > 375) {
-    $(".centered-content").css("padding-left", "1px");
-    $(".centered-content").css("padding-right", "1px");
-    $(".centered-content").css("width", "421px");
-  } else if(window.innerWidth <= 375 && window.innerWidth > 320) {
-    $(".centered-content").css("padding-left", "1px");
-    $(".centered-content").css("padding-right", "1px");
-    $(".centered-content").css("width", "371px");
-  }else if(window.innerWidth <= 320) {
-    $(".centered-content").css("padding-left", "1px");
-    $(".centered-content").css("padding-right", "1px");
-    $(".centered-content").css("width", "316px");
-  }
   $("#search-ingredients-request").val("search-fermentables");
   $("#scale-amount").html($("#recipe-scale-range").val());
   $("#efficiency").html($("#recipe-info-efficiency").val() + " %");
