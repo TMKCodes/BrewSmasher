@@ -22,4 +22,5 @@ $(document).ready(function() {
   $("#img-popover-close").on("click", function() {
     $("#img-popover").hide();
   });
+  $("#login-navbar-button").click();
 });

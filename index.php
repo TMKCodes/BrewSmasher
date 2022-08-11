@@ -75,20 +75,6 @@
             <a class="dropdown-item" id="search-misc-navbar-button">Browse Others</a>
           </div>
         </li>
-        <!--
-        <li class="nav-item dropdown" style="display: none;">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Storage
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" id="add-ingredient-to-storage-navbar-button">Add ingredient</a>
-              <a class="dropdown-item" id="browse-ingredients-in-storage-navbar-button">Browse your ingredient</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="add-equipment-to-storage-navbar-button">Add equipment</a>
-              <a class="dropdown-item" id="browse-equipments-in-storage-navbar-button">Browse your equipment</a>
-          </div>
-        </li>
-        -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Planning
@@ -97,11 +83,6 @@
             <a class="dropdown-item" id="add-new-recipe-navbar-button">Add new recipe</a>
             <a class="dropdown-item" id="browse-your-recipes-navbar-button">Browse your recipes</a>
             <a class="dropdown-item" id="browse-other-recipes-navbar-button">Browse public recipes</a>
-            <!--
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="add-new-water-navbar-button" style="display: none;">Add new water profile</a>
-            <a class="dropdown-item" id="browse-your-waters-navbar-button" style="display: none;">Browse your water profile</a>
-            -->
           </div>
         </li>
         <li class="nav-item dropdown">
