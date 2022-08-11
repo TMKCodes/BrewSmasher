@@ -65,6 +65,7 @@ td:has(button) {
 
 .recipe-block {
   margin-bottom: 15px;
+  background-color: #303030 !important;
   border-radius: .3rem;
   padding: 15px;
 }
