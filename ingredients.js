@@ -17,6 +17,9 @@ $("#register-navbar-button").on("click", function() {
 });
 
 $("#login-navbar-button").on("click", function() {
+  if(Cookies.get("user-id") != null) {
+    return
+  }
   $(".content").hide();
   $(".alert").hide();
   $("#login-content").show();
