@@ -147,6 +147,7 @@
         Now please feel free to log in. We do not not require you to confirm your email, so it is up to you that it was correct.
       </div>
     </div>
+    <!--
     <div class="jumbotron centered-content home-page" style="display:hidden">
       <h1 class="display-4">Welcome</h1>
       <p class="lead">This is a place meant for Craft Brewers.</p>
@@ -161,6 +162,7 @@
       <h1 class="display-4">© 2021 - Xorfork Solutions</h1>
       <p class="lead">Really done for us, but we realized we can give this free for you to use too. So be happy and brew at home!</p>
     </div>
+    -->
   </div>
 
   <?php require_once("ingredients.html"); ?>
