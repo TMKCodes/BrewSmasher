@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
   <link rel="stylesheet" href="style.css" />
   <title>Brewsmashing</title>
+  <link rel="icon" type="image/x-icon" href="res/brewsmashing-logo.ico" />
 </head>
 <body>
   <div id="img-popover">
